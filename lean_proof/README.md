@@ -1,8 +1,10 @@
 # A Lean proof: optimal packings of 15 and 16 unit circles in a circle
 
 This Lean 4 + Mathlib project proves that the best known packings of **15** and of **16** equal circles in a
-circle are optimal. To our knowledge both cases were open before this work: as of October 2026,
-Packomania, NumberDB and Wikipedia listed optimality as proven only for n ≤ 13 and n = 19.
+circle are optimal. Optimality had previously been proven for n ≤ 14 and n = 19. The case n = 14 is due to
+Ekanayake and LaFountain (2024), with an earlier proof by Fodor (2003). As of October 2026, Wikipedia, NumberDB
+and Packomania list n = 15 and n = 16 as conjectured, not proven. To our knowledge both cases were open before
+this work.
 
 **n = 15** (`CirclePacking/Final.lean`):
 
@@ -53,7 +55,9 @@ def optimal16 : Fin 16 → ℂ :=
 ```
 
 In words:
-* `H16` is an integer polynomial of degree 90 (`H16_natDegree`).
+* `H16` is an integer polynomial of degree 90 (`H16_natDegree`). Lean does not prove that `H16` is irreducible, so
+  it does not show that `q₁₆` has algebraic degree 90. Irreducibility was checked outside Lean, and nothing
+  depends on it.
 * `q₁₆ = 0.846993056660111759105461306…` is its largest real root. The first clause of the theorem proves that
   this `sSup` really is the largest root.
 * The optimal radius is `R₁₆ = 1 + √(2/(1 − q₁₆)) = 4.615425594873193985539244…`.

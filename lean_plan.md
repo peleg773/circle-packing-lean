@@ -39,7 +39,8 @@ alone, quickly, without scripts._
 * `Surv16.lean`, `KFive16.lean`: survivors of k = 5 (window assignment; closeness < R2 = 2.4·10⁻⁷).
 * Searches: k ∈ {0..4, 12..16} close at the root. For k = 5..11 the certificates are 61 chunks. The
   record case uses tolerance 2⁻¹⁷: 1,518 survivors, all passing.
-* **Explicit form** (after the user's request; it follows ChatGPT's `ALGEBRAIC16.md`):
+* **Explicit form** (the user's request; it follows the polynomial-root reconstruction in `ALGEBRAIC16.md`, which
+  the user directed ChatGPT to find):
   * `Bridge16.lean`:
     * mirror symmetry of c*, by `local_unique_gen` applied to the mirrored configuration;
     * the chain step `c*_{p+1} = c*_p·(q + is)`, using cross-product signs;
@@ -56,8 +57,8 @@ alone, quickly, without scripts._
   * `Exact16.lean`: the `Opt16` parameters, `optimal16`, and `optimal16_eq_C16`.
     * The sign choices of the square roots come from the order of c*'s coordinates (rational checks).
     * `D ≠ 0` comes from interval bounds.
-  * `H16_natDegree` (= 90). Irreducibility over ℚ is checked outside Lean (degree patterns mod 3, 5, 17)
-    and is not used.
+  * `H16_natDegree` (= 90). Irreducibility over ℚ, and hence the algebraic degree 90 of q16, is checked only
+    outside Lean (degree patterns mod 3, 5, 17) and is not used.
 
 ## n = 17 (in progress)
 * **Record:** 7 interior and 10 boundary circles, 25 contacts. Mirror symmetric, and the active set is
@@ -139,7 +140,27 @@ alone, quickly, without scripts._
     chunk 8/29 (the c* neighbourhood) splits again at +20 into 64. That makes 189 leaves.
   * `gen_certs.py` `gen_tree` writes one native leaf module per path, plus the combining module.
 
-## n = 18 (later)
+## n = 18 (started 2026-10-10 evening)
+* **Target:** R₁₈ = R₁₉ = 1 + √6 + √2, attained by the 19-packing minus one circle (explicit, in ℚ(√2, √3)).
+* **Parameters** (`explore/C18Compute.lean`):
+  * `P18`: ρ = 4248186710296/2⁴⁰ = 3.86370330515638 > ρ₁₉, Rhi = 3.30578, δ = 0.0833333315 turns (< 1/12);
+  * `Ltab18`: `Ltab17` for m ≤ 13, and `L₁₄ = 3.31`, certified by the radius-bound run `Prb14`.
+  * `paramsOK` holds for both.
+* **Lower-bound structure** (ρ'' = max(ρ, ρ₁₉ − ε) < ρ₁₉):
+  * **k ≤ 6:** B ≥ 12 boundary circles need 12·φ(ρ'') ≤ 1 turn, so ρ'' ≥ ρ₁₉. This needs a separate small
+    lemma, because the search alone cannot close k = 6: the 19-packing minus its centre is an 18-packing at
+    ρ₁₉ whose hexagon wiggles.
+  * **k ≥ 14:** the interior radius stays below 3.3058 < L₁₄ = 3.31.
+  * **k = 7..13:** the search at P18.
+    * Survivors are expected for k = 7, near the hexagon structures (Python: 358,814 boxes, interior
+      radii ≈ 0, 2, …, 2√2), and for k = 8.
+    * Matching cores, certified in Python: `hexagon_B11` (17-point core; the 11th boundary circle rattles
+      in its window), `five_ring_one_s_B11`, `k8_two_s_B10`.
+    * Each core needs `LocalU` data and a survivor predicate that assigns windows, including the window
+      holding a single (rattling) circle.
+* **Status:** `Prb14` is cheap for most k (k = 6: 47K nodes, 31 s). The sweep over k = 0..14 is running
+  (`explore/logs/rb14`). Next: P18 for k = 7..13 (cost and survivors).
+
 The optimum is not unique (`n18_analysis.md`). The plan: B&B at ρ₁₉ for k = 7..13, then three certified
 rigid cores, each with a forced interior-interior contact. This needs a radius bound m = 14 above
 R_I = 3.3058 (cheap, at about 3.31) and a survivor check against several structures.

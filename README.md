@@ -1,19 +1,25 @@
 # Optimal packings of 15 and 16 equal circles in a circle
 
 This repository contains computer-assisted proofs that the best known packings of **15** and **16** unit
-circles in a circle are optimal. Both proofs are **formally verified in Lean 4 + Mathlib**. To our
-knowledge both cases were open: as of October 2026, Packomania, NumberDB and Wikipedia listed optimality as
-proven only for n ≤ 13 and n = 19.
+circles in a circle are optimal. Both proofs are **formally verified in Lean 4 + Mathlib**.
+
+Optimality had previously been proven for n ≤ 14 and n = 19. The case n = 14 is due to Ekanayake and
+LaFountain (2024), with an earlier proof by Fodor (2003). As of October 2026, Wikipedia, NumberDB and
+Packomania list n = 15 and n = 16 as conjectured, not proven. To our knowledge both cases were open before
+this work.
 
 | n | smallest container radius R for n unit circles | status |
 |---|---|---|
 | 15 | 1 + √(6 + 2/√5 + 4√(1 + 2/√5)) = 4.52135696470616424090… | proved, Lean-verified (`circle_packing_15`) |
-| 16 | 1 + √(2/(1 − q₁₆)) = 4.61542559487319398553924…, where q₁₆ is the largest real root of an explicit integer polynomial of degree 90 | proved, Lean-verified (`circle_packing_16`) |
+| 16 | 1 + √(2/(1 − q₁₆)) = 4.61542559487319398553924…, where q₁₆ is the largest real root of an explicit integer polynomial H₁₆ of degree 90 | proved, Lean-verified (`circle_packing_16`) |
 | 17 | 4.79203374831057917014912… (best known packing) | in progress |
 | 18 | conjecturally R₁₈ = R₁₉ = 1 + √6 + √2 | in progress |
 
-Each theorem states the optimal radius explicitly and names an explicit packing that attains it. It also
-proves that no packing fits in a smaller circle.
+Each theorem states the optimal radius explicitly and proves that no packing fits in a smaller circle.
+* The 16-circle theorem also names an explicit packing, `optimal16`, that attains the radius.
+* In the current package the 15-circle theorem only asserts that an optimal packing exists. An explicit
+  `optimal15`, given by closed formulas and already proved equal to the certified optimum, comes with the next
+  update.
 
 ## Check the proof yourself
 

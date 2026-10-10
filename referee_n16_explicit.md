@@ -27,7 +27,7 @@ radius for 16 non-overlapping unit disks, attained by `optimal16`".
   * `0 < 1 − q16` and `−1 ≤ q16 ≤ 1` hold (re-proved in a scratch file);
   * the arguments of both square roots are proved to be squares (2.553 and 3.150);
   * `D < 0` is proved (`D16_neg`; numerically D ≈ −9.723).
-* **The formulas match ChatGPT's `ALGEBRAIC16.md` §2 term by term.** Both square-root signs are correct; the other
+* **The formulas match `ALGEBRAIC16.md` §2 term by term** (the note the user had ChatGPT compute). Both square-root signs are correct; the other
   choices put the centres outside the container.
 * **Numerics** (mpmath at 120 digits, python-flint):
   * the coefficients match, and H16 is primitive and irreducible with 24 real roots;
@@ -52,7 +52,7 @@ radius for 16 non-overlapping unit disks, attained by `optimal16`".
    `H16coeffs` is part of the statement.
 5. The README notes that the `_iff` and `_euclidean` variants omit the `IsGreatest` clause; it is `q16_isGreatest`.
 6. The isolating interval's width is now stated as 1.9·10⁻²⁶.
-7. `ALGEBRAIC16.md` (ChatGPT's note) is out of date: it says the elimination is not formalized. That is now superseded.
+7. `ALGEBRAIC16.md` (the user-supplied note) is out of date: it says the elimination is not formalized. That is now superseded.
    The note is the user's file and was left unchanged.
 
 **Clean test.** The exported package (`lean_proof/`, `lean_proof_circle_packing.zip`) built from scratch:

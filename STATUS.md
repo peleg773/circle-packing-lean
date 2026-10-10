@@ -11,7 +11,7 @@ alone (no scripts).
 | n | Status |
 |---|---|
 | **15** | **Proved and formally verified in Lean 4 + Mathlib** (theorem `circle_packing_15`). Closed form R = 1 + √(6 + 2/√5 + 4√(1 + 2/√5)). Axioms: the three standard ones plus 24 `native_decide` certificate axioms. Also proved by the Python/arb pipeline and confirmed by an independent re-implementation. |
-| **16** | **Proved and formally verified in Lean 4 + Mathlib, in explicit form** (theorem `circle_packing_16`, explicit since 2026-10-10 19:00). R₁₆ = 1 + √(2/(1 − q₁₆)) = 4.6154255948731939855392441…, where q₁₆ is the largest real root of an explicit degree-90 integer polynomial H16 (irreducible over ℚ). An explicit configuration `optimal16` (closed formulas in q₁₆: √, arccos, cos, sin) attains it. Axioms: the three standard ones plus 62 `native_decide` certificate axioms (lower bound only). Also proved by the Python/arb pipeline. |
+| **16** | **Proved and formally verified in Lean 4 + Mathlib, in explicit form** (theorem `circle_packing_16`, explicit since 2026-10-10 19:00). R₁₆ = 1 + √(2/(1 − q₁₆)) = 4.6154255948731939855392441…, where q₁₆ is the largest real root of an explicit degree-90 integer polynomial H16. H16 is irreducible over ℚ by an external check, not in Lean; that check is what gives q₁₆ algebraic degree 90. An explicit configuration `optimal16` (closed formulas in q₁₆: √, arccos, cos, sin) attains it. Axioms: the three standard ones plus 62 `native_decide` certificate axioms (lower bound only). Also proved by the Python/arb pipeline. |
 | 17 | **In progress, mostly done (Lean directly).** The Lean proof compiles with only the standard axioms, given the branch-and-bound certificates as hypotheses. All certificates except the record case are built: k = 0..6 and 8..17, plus the radius bound for 13 circles (105 modules, 2.4 h). The record case k = 7 is heavy. Its interior circle near the centre blocks no boundary arc, so the survivor predicate uses six arcs (`C17Surv.lean`, tolerance 2⁻¹⁸). Near the optimum it passes, and the full native run is in progress (64 chunks). A competing local optimum is only 7.6·10⁻⁵ worse and close in configuration space. |
 | 14 | Known theorem (Fodor 2003; Ekanayake–LaFountain 2024). Re-proved with the Python code as calibration. |
 | 18 | Harder: the optimum is not unique (`n18_analysis.md`). Global Python search partly done (k = 7). |
@@ -45,7 +45,8 @@ alone (no scripts).
 * A referee subagent reviewed the n = 16 package and found nothing fatal or serious; the minor points are
   fixed (`referee_n16_lean.md`).
 * The user flagged that the n = 16 statement was existential, with no explicit radius or construction. It
-  now names `R16`, `q16`, `H16` and `optimal16` (following ChatGPT's `ALGEBRAIC16.md`).
+  now names `R16`, `q16`, `H16` and `optimal16`. It follows the polynomial-root reconstruction in `ALGEBRAIC16.md`,
+  which the user directed ChatGPT to find.
   * Clean test of the new package: passed (about 50 min; `Build completed successfully (9167 jobs)`).
   * Referee review: no critical problems; the minor points are fixed (`referee_n16_explicit.md`).
   * `lean_proof/`, the zip and the artifact page are refreshed.

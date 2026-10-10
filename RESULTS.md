@@ -37,8 +37,10 @@ KKT/left-inverse uniqueness lemma instead of Krawczyk. See `lean_proof/README.md
   R_16 = 1 + sqrt(2 / (1 - q_16)) = 4.615425594873193985539244161991965248 (+- 5e-37),
 where q_16 = 0.846993056660111759105461306653800858... is the largest real root of an explicit integer
 polynomial H_16 of degree 90.  q_16 = cos θ, where θ is the angle between consecutive boundary centres.
-H_16 is irreducible over ℚ: its factor-degree patterns mod 3, 5 and 17 leave only degrees 0 and 90
-(external check, not in Lean), so q_16 has degree exactly 90.  Equivalently,
+Lean proves that H_16 has degree 90 (`H16_natDegree`) and that q_16 is its largest real root.  That q_16 also has
+algebraic degree 90 needs H_16 to be irreducible over ℚ, which is NOT proved in Lean.  It was checked by an
+external computation: the factor-degree patterns of H_16 mod 3, 5 and 17 leave only degrees 0 and 90.  Nothing
+in the proof depends on it.  Equivalently,
   d_16 = 0.5531852191443445298998869702087782279 (+- 2e-38).
 The optimal packing (Goldberg 1971: 11 circles touching the container, 5 inner circles, 21 contacts, one mirror
 symmetry) is unique up to isometry.
@@ -63,8 +65,9 @@ Here `H16 = ZPoly.toPoly H16coeffs` (91 integer coefficients), `q16 = sSup {x | 
   * `c = (a - d) b + (d² + 1 - a²)/2`.
 
 The user flagged that the first version of the theorem was existential (R₁₆ inside a decimal bracket,
-attained near explicit rationals); this explicit form replaces it.  It follows an algebraic reconstruction
-suggested by ChatGPT (`ALGEBRAIC16.md`, user-supplied), now fully kernel-checked:
+attained near explicit rationals); this explicit form replaces it.  It follows an algebraic reconstruction in
+terms of polynomial roots, which the user directed ChatGPT to find (`ALGEBRAIC16.md`, user-supplied).  It is now
+fully kernel-checked:
 * `Bridge16.lean`:
   * c* is mirror symmetric, by local uniqueness applied to its mirror image;
   * its boundary chain is `c*_{p+1} = c*_p e^{iθ}`;
@@ -87,12 +90,14 @@ Axioms: `propext`, `Classical.choice`, `Quot.sound` and 62 `native_decide` certi
 `R16_bounds` depend on the three standard axioms).  The Lean search needs about 13.5M boxes, against 3.1G
 for the Python run of section 3.
 
-**Theorem C (calibration; previously proved by Fodor 2003 and Ekanayake–LaFountain 2024).**
+**Theorem C (calibration; previously proved by Ekanayake–LaFountain 2024, and earlier by Fodor 2003 in Stud. Univ.
+Žilina Math. Ser., which we could not access).**
 R_14 = 4.32842855486083668140..., d_14 = 0.60088416110936202262926650068963308613(+-8e-39), unique optimum —
 re-proved by the same pipeline.
 
-**Novelty.**  As of 2026-10-09, n = 15 and n = 16 are listed as open by Packomania (proven only N <= 13, 19),
-NumberDB T394 and Wikipedia; arXiv and citation-chain searches found no proof (literature.md).  To our knowledge
+**Novelty.**  Optimality was previously proven for n ≤ 14 and n = 19.  Wikipedia and NumberDB T394 record n = 14
+(Ekanayake–LaFountain 2024); Packomania's bold marks still stop at 13.  As of 2026-10-09 all three list n = 15
+and n = 16 as conjectured, and arXiv and citation-chain searches found no proof (literature.md).  To our knowledge
 Theorems A and B are new, and these are the first interval-arithmetic computer-assisted optimality proofs for
 equal circles in a circular container.  The proof does NOT depend on any previously published optimality result
 (the radius bounds it needs for 8..13 points are re-proved by the same machinery).
