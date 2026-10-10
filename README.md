@@ -47,9 +47,8 @@ lake env lean Check.lean  # print the theorems, the definitions they use, and th
 
 ## Acknowledgments
 
-Developed with AI assistance (Anthropic's Claude, through Claude Code). ChatGPT suggested the algebraic
-description of the 16-circle optimum, as the largest root of a degree-90 polynomial; it is fully verified
-in Lean.
+Developed with AI assistance (Anthropic's Claude, through Claude Code). ChatGPT was also directed along the way to find an algebraic
+description of the 16-circle optimum using roots of polynomials.
 
 ## License
 
