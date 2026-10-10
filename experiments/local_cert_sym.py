@@ -1,5 +1,5 @@
 """Rigorous local certificate for a MIRROR-SYMMETRIC jammed packing whose active set is overdetermined
-(|B| + |C| > 2n), e.g. n = 14, 17.
+(|B| + |C| > 2n), e.g. n = 17.
 
 Symmetry: reflection x -> -x maps the configuration to itself (point permutation sig, an involution).
   * Reduced unknowns: (x_i, y_i) for one representative of each 2-orbit, y_i for fixed points (x_i = 0), and t.

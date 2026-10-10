@@ -23,9 +23,6 @@ of 41d^8 - 200d^6 + 285d^4 - 150d^2 + 25).  The optimal packing (Pirl/Kravitz: a
 side 2; each outer circle = an inner vertex + 2 * (outer unit normal of an incident pentagon edge)) is unique
 up to isometry.
 
-**Theorem 14 (calibration; known: Fodor 2003, Ekanayake–LaFountain 2024).** R_14 = 4.32842855486083668...,
-d_14 = 0.60088416110936202262926650068963308613(+-8e-39); optimal packing unique up to isometry.
-
 ## 1. Push-out normal form (L1)
 Any centre with |c| > R_I := sqrt(rho^2 - 4) can be pushed radially onto |c| = rho keeping all distances >= 2.
 After pushing all such centres: n-k "boundary" centres on |c| = rho, k "interior" centres with |c| <= R_I.
@@ -34,10 +31,10 @@ After pushing all such centres: n-k "boundary" centres on |c| = rho, k "interior
 Interior q = s e^{i psi} forbids the open boundary arc of half-width theta(s) around psi (none if s <= rho-2);
 boundary centres need angular separation delta_B = 2 asin(1/rho).  The configuration exists iff Bmax(I) >= n-k,
 with Bmax computed exactly by the greedy of L3.  All constraints are monotone in rho, so a search at
-rho_test >= rho* covers all rho <= rho*.  Ranges of k: n-k <= floor(2 pi / delta_B) gives k >= 5 (n = 15, 16)
-and k >= 4 (n = 14); interior points lie in the disk of radius R_I, which cannot hold
-11 points (n=15: R_I = 2.8983 < L_11 = 2.92380), 12 points (n=16: R_I = 3.0119 < L_12 = 3.02960),
-10 points (n=14: R_I = 2.6605 < L_10 = 2.81302), with L_m the proven bounds of section 4.
+rho_test >= rho* covers all rho <= rho*.  Ranges of k: n-k <= floor(2 pi / delta_B) gives k >= 5 (n = 15, 16);
+interior points lie in the disk of radius R_I, which cannot hold
+11 points (n=15: R_I = 2.8983 < L_11 = 2.92380) or 12 points (n=16: R_I = 3.0119 < L_12 = 3.02960),
+with L_m the proven bounds of section 4.
 
 ## 3. Rigorous branch and bound (ringbb_final.py)
 For every k in range, the k interior points in canonical form (s_0 >= ... >= s_{k-1}, psi_0 = 0, psi_1 in [0,pi])
@@ -59,10 +56,10 @@ rho_7 >= rho_6 = 2.  Then, for m = 8..13 in order, the same B&B at rho_test = L_
 ## 5. Local uniqueness (L7)
 Krawczyk-certified record configuration, strictly positive KKT multipliers, certified smallest singular value
 => explicit delta_loc: no other configuration with min distance >= d* within (rotation-aligned) Euclidean
-distance delta_loc.  delta_loc >= 7.003e-4 (n=14), 3.079e-4 (n=15), 2.409e-4 (n=16).
+distance delta_loc.  delta_loc >= 3.079e-4 (n=15), 2.409e-4 (n=16).
 
 ## 6. Survivors in the neighbourhood (L8, verify_final_arb2.py)
-For the record case k (4, 5, 5 for n = 14, 15, 16) all surviving boxes (tolerance 1e-5) are turned into
+For the record case k (k = 5 for n = 15 and n = 16) all surviving boxes (tolerance 1e-5) are turned into
 enclosures of full configurations (boundary angles by exact interval propagation over all assignments of
 boundary points to allowed intervals) and certified to lie within rho* delta_loc of c* (exact-rational decisions).
 

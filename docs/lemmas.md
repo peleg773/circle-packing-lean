@@ -63,7 +63,7 @@ termination limit is >= the exact one; by induction we place at least as many po
 ## L4 Disjointness of shrunk forbidden arcs — PROVED (computer: `verify_L4.py`, arb)
 For s, t in [E, R_I]: theta_II(s,t) >= theta(s) + theta(t) - delta_B.  Since max over a box of
 f(s,t) = (s^2+t^2-4)/(2st) is attained at a corner (for fixed t, f is decreasing then increasing in s) and
-theta is increasing, a single box suffices: certified margins at rho_test: n=14: 5.257 deg, n=15: 4.147 deg,
+theta is increasing, a single box suffices: certified margins at rho_test: n=15: 4.147 deg,
 n=16: 3.725 deg.
 
 ## L5 Measure bound — PROVED (uses L4)
@@ -86,14 +86,15 @@ lower bounds is:
   L_11 = 2.9238014763587, L_12 = 3.0295989005143, L_13 = 3.2360647414318.
 * m > 13: L_m := L_13 (monotonicity).
 These also give the k-ranges: n=15: k <= 10 (L_11 > R_I = 2.8983); n=16: k <= 11 (L_12 > 3.0119);
-n=14: k <= 9 (L_10 > 2.6605); n=17: k <= 12 (L_13 > 3.2217).
+n=17: k <= 12 (L_13 > 3.2217).
 (For comparison, the published optimal values are rho_10 = 2.8130256 (Pirl), rho_11 = 1/sin(pi/9) (Melissen),
 rho_12 = 3.0296019 (Fodor), rho_13 = 1+sqrt5 (Fodor); they are NOT used.)
 
 ## L7 Local uniqueness lemma — PROVED (computer: `local_cert.py`; symmetric variant `local_cert_sym.py`)
 Let x* be a configuration in the unit disk, B and C its boundary/contact sets, t* = d*^2, such that (verified):
- (a) x* lies in an explicit tiny box in which the active system has a unique solution (Krawczyk; for n=14
-     the mirror-symmetric reduced system, whose unique symmetric solution satisfies all active equations);
+ (a) x* lies in an explicit tiny box in which the active system has a unique solution (Krawczyk; for an
+     overdetermined active set the mirror-symmetric reduced system, whose unique symmetric solution satisfies all
+     active equations);
      all inactive constraints are strict on the box;
  (b) there are multipliers lambda_k > 0 (sum 1), mu_i > 0 with sum_j lambda_ij (p_i - p_j) = mu_i p_i;
  (c) sigma > 0 with |L delta| >= sigma |delta| for delta orthogonal to J x* (L = linearised active constraints).
@@ -103,16 +104,15 @@ the closed unit disk with min distance >= d* and min_phi |R_phi x - x*|_2 < delt
 v_i = b_i.delta - |delta_i|^2 >= 0; KKT identity gives sum lambda u + sum mu v = Q(delta) <= 2 eps^2; hence
 |L delta| <= K eps^2; with |L delta| >= sigma eps: eps = 0 or eps >= delta_loc.  []
 The lemma uses only the listed active constraints, so it holds for any positive multiplier vector satisfying
-(b) (relevant when |B| + |C| > 2n, e.g. n = 14).
-Certified values: n=14: d* = 0.60088416110936202262926650068963308613(+-8e-39), delta_loc >= 7.003e-4;
-n=15: d* = 0.5679628677369514568307668140899832722(+-5e-38), delta_loc >= 3.079e-4;
+(b) (relevant when |B| + |C| > 2n, e.g. n = 17).
+Certified values: n=15: d* = 0.5679628677369514568307668140899832722(+-5e-38), delta_loc >= 3.079e-4;
 n=16: d* = 0.5531852191443445298998869702087782279(+-1e-38), delta_loc >= 2.409e-4.
 
 ## L8 Survivors inside the uniqueness neighbourhood — PROVED (computer: `verify_final_arb.py`)
 For every surviving canonical interior box (record case k): enumerate all assignments of the n-k boundary
 points to allowed arcs (relaxed); exact Floyd–Warshall on the simple temporal network gives outer bounds of all
 boundary angles; with the best relabelling/reflection, the maximal Euclidean distance (boundary points at radius
-rho* exactly) to c* is < rho* delta_loc.  Results: n=14 (k=4): D <= 1.46e-7 < 2.33e-3; n=15 (k=5):
+rho* exactly) to c* is < rho* delta_loc.  Results: n=15 (k=5):
 D <= 2.12e-4 < 1.084e-3; n=16 (k=5): D <= 1.66e-4 < 8.71e-4.
 
 ## L9 Angular contraction — PROVED (code `contract_rig`)
@@ -138,8 +138,6 @@ float brackets computed with arb.  Tested against mpmath on 40,000+ inputs: no e
   6 interior) is 2.8% worse.
 * O4 (n=18): optimal configurations (d = 2 sin(pi/12)) with 10, 11, 12 boundary points; all found contain the
   centre point and >= 5 points at radius exactly 2 (the 19-packing's hexagonal core); several have rattlers.
-* O5 (n=13): the optimum is degenerate: a filled 10-ring at rho = 1+sqrt5 plus a freely movable inner unit
-  triangle also attains it.
 * O6 (n=17): best two local optima differ by 7.6e-5 relative and have nearby interior configurations
   (k = 7: radii ~ (2.55, 2.07, 2.07, 1.95, 1.95, 1.93, 0.11)).
 

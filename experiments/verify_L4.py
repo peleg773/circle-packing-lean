@@ -1,7 +1,7 @@
 """Rigorous verification (arb) of lemma L4 at rho = rho_test:
    for all s, t in [E, R_I]:  theta_II(s,t) - theta(s) - theta(t) + delta_B > 0,
 where E = sqrt(rho^2-1) - sqrt(3) (pocket threshold), R_I = sqrt(rho^2-4).
-2-D bisection; on a box [s1,s2]x[t1,t2]:  theta_II >= arccos(max_{corners} f)  (f max at corners, see lemmas.md),
+2-D bisection; on a box [s1,s2]x[t1,t2]:  theta_II >= arccos(max_{corners} f)  (f max at corners, see docs/lemmas.md),
 theta increasing on (rho-2, R_I] -> theta(s) + theta(t) <= theta(s2) + theta(t2).
 Usage: python verify_L4.py rho_test
 """

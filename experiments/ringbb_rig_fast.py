@@ -1,4 +1,4 @@
-"""RIGOROUS branch-and-bound over interior configurations (see ringbb.py docstring and lemmas.md L1-L6).
+"""RIGOROUS branch-and-bound over interior configurations (see ringbb.py docstring and docs/lemmas.md L1-L6).
 
 Every pruning decision and every contraction step is certified with outward-rounded interval
 arithmetic (rigmath.py: nextafter-rounding for + - * / sqrt, series enclosures for cos/arccos).

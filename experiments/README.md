@@ -7,7 +7,7 @@ All rigorous steps are deterministic.  Logs of the certified runs: `out/rig_*.lo
 | script | role | lemma |
 |---|---|---|
 | `local_cert.py n` | Krawczyk enclosure of the record configuration, strict inactive constraints, positive KKT multipliers, certified sigma, delta_loc (arb) -> `known_packings/local_certificate_n{n}.json` | L7 |
-| `local_cert_sym.py 14` | same for mirror-symmetric configurations with overdetermined active set (n=14) | L7 |
+| `local_cert_sym.py n` | same for mirror-symmetric configurations with overdetermined active set (n = 17) | L7 |
 | `verify_L4.py rho` | disjointness of shrunk forbidden arcs (measure bound) (arb) | L4 |
 | `rigmath.py` | outward-rounded interval primitives; rigorous cos / arccos series enclosures | L10 |
 | `ringbb_rig.py n rho kmin kmax tol` | rigorous branch and bound over interior configurations | L1-L6, L3', L9 |
@@ -19,9 +19,9 @@ Reproduce:
 ```
 cd experiments
 python rig_consts_gen.py            # (optional) regenerate rig_consts.json brackets with arb (already provided)
-bash run_rigorous_all.sh            # n = 14 (calibration), 15, 16
+bash run_rigorous_all.sh            # n = 15, 16
 ```
-Runtime (20 cores): n=14 ~2 min; n=15 ~20 min; n=16 several hours (k = 10, 11 dominate).
+Runtime (20 cores): n=15 ~20 min; n=16 several hours (k = 10, 11 dominate).
 
 ## Floating-point exploration (not part of the proof)
 `pk_common.py`, `analyze_known.py` (reconstruct/polish Packomania packings), `search_lib.py`, `multistart.py`
@@ -40,7 +40,7 @@ feasible configuration; ~21k box tests), `positive_control.py` (B&B at a competi
 |---|---|---|
 | `ringbb_rig.py` | first rigorous runs (superseded) | original |
 | `ringbb_rig_fast.py` | n=16 re-runs (superseded) | caches certified contraction bounds per pair (identical trees) |
-| `ringbb_final.py` | **final certified run n = 14, 15, 16; radius bounds** | + self-proved radius table, overflow = hard failure, JSON audit log |
+| `ringbb_final.py` | **final certified run n = 15, 16; radius bounds** | + self-proved radius table, overflow = hard failure, JSON audit log |
 | `ringbb_v3.py` | (n = 17 preparation) | + cheaper certified arccos lower bound in contraction (`rigmath_fast.py`, still rigorous) |
 | `ringbb_v4.py` | n = 17, n = 18 searches | + "deep-last" split rule (efficiency only; 80-2000x smaller trees for large k) |
 

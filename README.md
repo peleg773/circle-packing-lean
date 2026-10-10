@@ -40,16 +40,16 @@ lake env lean Check.lean  # print the theorems, the definitions they use, and th
 
 | path | contents |
 |---|---|
-| `lean_proof/` | the self-contained Lean package; the theorems are in `CirclePacking/Final.lean` and `CirclePacking/Final16.lean` |
-| `RESULTS.md` | the mathematical results, and an independent proof by a Python + ball-arithmetic pipeline |
-| `lemmas.md`, `proof_attempt.md` | the method: push-out lemma, exact boundary counting, branch and bound, local uniqueness |
-| `STATUS.md`, `lean_plan.md` | the project's status and the formalization log, including the work on 17 circles |
-| `n18_analysis.md` | the plan for 18 circles |
-| `referee_n16_lean.md`, `referee_n16_explicit.md` | independent reviews of the 16-circle Lean statement |
-| `experiments/` | the Python + arb pipeline (a separate, non-Lean proof for n = 14, 15, 16) and exploration code |
+| `lean_proof/` | **the proof**: a self-contained Lean package. The theorems are in `CirclePacking/Final.lean` (n = 15) and `CirclePacking/Final16.lean` (n = 16); `lean_proof/README.md` explains what to read, run and trust |
+| `docs/RESULTS.md` | the mathematical results, and an independent proof of n = 15 and n = 16 by a Python + ball-arithmetic pipeline |
+| `docs/STATUS.md`, `docs/lean_plan.md` | the project's status and the formalization log, including the work on 17 and 18 circles |
+| `docs/lemmas.md`, `docs/proof_attempt.md` | the method: push-out lemma, exact boundary counting, branch and bound, local uniqueness |
+| `docs/n18_analysis.md` | the plan for 18 circles |
+| `docs/referee_n16_lean.md`, `docs/referee_n16_explicit.md` | independent reviews of the 16-circle Lean statement |
+| `docs/literature.md` | references; the papers themselves are not included |
+| `experiments/` | the Python + arb pipeline (the separate, non-Lean proof of n = 15 and n = 16) and exploration code |
 | `independent_check/` | a from-scratch re-implementation used to cross-check n = 15 |
-| `known_packings/` | local-uniqueness certificates and the best known packings (coordinates from Packomania, E. Specht) |
-| `literature.md` | references; the papers themselves are not included |
+| `known_packings/` | local-uniqueness certificates (n = 15, 16, 17), certified cores for n = 18, and the best known packings for n = 13–20 (coordinates from Packomania, E. Specht) |
 
 ## Acknowledgments
 

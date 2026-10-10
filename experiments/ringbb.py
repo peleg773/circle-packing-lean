@@ -2,7 +2,7 @@
 
 Normalisation: unit circles <-> centres with pairwise distance >= 2, centres within radius rho.
 
-Reduction (see lemmas.md, L1-L3):
+Reduction (see docs/lemmas.md, L1-L3):
   * Push-out lemma: WLOG every centre is either on the circle |c| = rho ("boundary point")
     or satisfies |c| <= R_I := sqrt(rho^2 - 4) ("interior point").
   * Given the interior points I, a boundary point at angle a is admissible iff for every q=(s,psi) in I

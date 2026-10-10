@@ -1,3 +1,0 @@
-[RIGOROUS] n=14 rho_test=3.32842855486084  delta_B in [0.6103122282981348,0.6103122282981351]  R_I <= 2.660533150481877
-  k= 4: presplit=4174 boxes=4,174  pruned[pair/contr,bnd,-,order,measure]=774,561,0,0,0  overflow=0 survivors=2839  unfinished=0  time=5.9s
-      survivor s-ranges: [1.53629,1.53629], [1.44260,1.44260], [1.33557,1.33557], [1.33557,1.33557]

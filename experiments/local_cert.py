@@ -16,7 +16,7 @@ Given an approximate configuration x~ (from known_packings JSON) with boundary s
         K^2 = sum_k 4 max(1, 1/lambda_k)^2 + sum_i (2/mu_i + 1)^2.
      LEMMA: if x is any n-point configuration in the closed unit disk with min distance >= sqrt(t*) and
      the optimally rotated displacement delta = R x - x* satisfies |delta|_2 < delta_loc, then delta = 0.
-     (Proof in proof_attempt.md / lemmas.md, "Local uniqueness lemma".)
+     (Proof in docs/proof_attempt.md / docs/lemmas.md, "Local uniqueness lemma".)
 
 Usage: python local_cert.py n [prec_bits]
 """

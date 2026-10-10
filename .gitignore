@@ -9,6 +9,8 @@ lean_proof_circle_packing.zip
 
 # Python caches and crash dumps
 __pycache__/
+*.nbc
+*.nbi
 *.pyc
 *.stackdump
 experiments/out/numba_cache_exp/

@@ -1,6 +1,6 @@
 #!/bin/bash
 # n = 18: (1) prove L_14 (needed for k <= 13), (2) rigorous v4 B&B at rho_test = rho_19+ for k = 7..13 (B <= 11;
-# B = 12 is impossible for a configuration with rho < rho_19 after scaling+push-out, see n18_analysis.md).
+# B = 12 is impossible for a configuration with rho < rho_19 after scaling+push-out, see docs/n18_analysis.md).
 set -e
 cd "$(dirname "$0")"
 export NUMBA_CACHE_DIR="$(pwd)/out/n18/numba_cache_$(date +%s)"

@@ -90,11 +90,6 @@ Axioms: `propext`, `Classical.choice`, `Quot.sound` and 62 `native_decide` certi
 `R16_bounds` depend on the three standard axioms).  The Lean search needs about 13.5M boxes, against 3.1G
 for the Python run of section 3.
 
-**Theorem C (calibration; previously proved by Ekanayake–LaFountain 2024, and earlier by Fodor 2003 in Stud. Univ.
-Žilina Math. Ser., which we could not access).**
-R_14 = 4.32842855486083668140..., d_14 = 0.60088416110936202262926650068963308613(+-8e-39), unique optimum —
-re-proved by the same pipeline.
-
 **Novelty.**  Optimality was previously proven for n ≤ 14 and n = 19.  Wikipedia and NumberDB T394 record n = 14
 (Ekanayake–LaFountain 2024); Packomania's bold marks still stop at 13.  As of 2026-10-09 all three list n = 15
 and n = 16 as conjectured, and arXiv and citation-chain searches found no proof (literature.md).  To our knowledge
@@ -139,11 +134,11 @@ n = 16, against 3.1G here.)
 ## 4. Reproduction
 ```
 cd experiments
-bash run_final.sh             # certificates, L4, radius bounds, B&B for n = 14, 15, 16, survivor checks
+bash run_final.sh             # certificates, L4, radius bounds, B&B for n = 15, 16, survivor checks
 python summarize_final.py     # checks every completeness condition (all k present, overflow = 0, ...)
 ```
 Software: Python 3.10.9, numba 0.68.0, numpy 2.2.6, python-flint 0.9.0 (arb), mpmath 1.3.0, scipy 1.15.3.
-Source hashes: `experiments/out/final/SOURCE_HASHES_at_launch.txt`.  Runtime on 20 cores: 5 h 02 min (n = 14: 1 min, n = 15: 17 min, n = 16: 4 h 41 min; `out/final/TIMES.txt`).
+Source hashes: `experiments/out/final/SOURCE_HASHES_at_launch.txt`.  Runtime on 20 cores: about 5 h (n = 15: 17 min, n = 16: 4 h 41 min; `out/final/TIMES.txt`).
 Set OPENBLAS_NUM_THREADS=1 (done in the script), otherwise 20 worker processes exhaust Windows commit memory.
 
 ## 5. Validation
@@ -152,7 +147,6 @@ Set OPENBLAS_NUM_THREADS=1 (done in the script), otherwise 20 worker processes e
 * Randomised soundness tests: ~21,000 box tests on ~5,200 strictly feasible configurations: no false prune.
 * Positive controls: B&B at the container radius of the two best n = 15 competitors (0.17 %, 0.25 % worse)
   keeps them.
-* Calibration on the proven case n = 14 (all k closed; survivors within 1.5e-7 of the optimum).
 * Exact closed form for n = 15 checked to lie in the Krawczyk uniqueness box (deviation 4.6e-46 vs 1e-38).
 * Independent re-implementation of the n = 15 search by a separate agent (written from scratch, without reading
   `experiments/`): C1 (k = 6..10 closed) and C2 (every admissible k = 5 configuration is within 3.46e-6 of the
@@ -184,4 +178,3 @@ components: the Lean kernel with Mathlib, and compiled evaluation of the 8 searc
   one outer point) has 30 deg of slack in every measure/counting bound, so it can only be excluded via the
   discrete window structure; its 17-point core is rigorously certified as a strict local maximum
   (delta_loc >= 6.8e-4), giving a concrete route to a full proof with the same machinery.
-* n = 13 note: its optimum is not unique (a filled 10-ring plus a movable inner triangle also attains it).

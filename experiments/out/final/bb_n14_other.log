@@ -1,8 +1,0 @@
-[FINAL RIGOROUS] n=14 rho_test=3.32842855486084 mode=selfcontained delta_B in [0.6103122282981348,0.6103122282981351] R_I <= 2.660533150481877
-  radius table (lower bounds rho_m, m=0..13): [np.float64(0.0), np.float64(0.0), np.float64(0.9999999999999998), np.float64(1.1547005383792512), np.float64(1.4142135623730947), np.float64(1.7013016167040795), np.float64(1.9999999999999996), np.float64(1.999999999999999), np.float64(2.304762566197615), np.float64(2.613123316626823), np.float64(2.8130228183724926), np.float64(2.9238014763586864), np.float64(3.029598900514253), np.float64(3.2360647414318118)]
-  k= 5: presplit=4660 boxes=114,746 pruned[pair/contr,bnd,-,order,measure]=26827,5920,0,0,26956 overflow=0 unfinished=0 survivors=0 time=7.4s  [OK]
-  k= 6: presplit=6364 boxes=383,816 pruned[pair/contr,bnd,-,order,measure]=85754,36846,0,0,72490 overflow=0 unfinished=0 survivors=0 time=8.4s  [OK]
-  k= 7: presplit=4096 boxes=714,054 pruned[pair/contr,bnd,-,order,measure]=154218,80970,0,0,123887 overflow=0 unfinished=0 survivors=0 time=8.7s  [OK]
-  k= 8: presplit=4096 boxes=714,326 pruned[pair/contr,bnd,-,order,measure]=164561,72292,0,0,122358 overflow=0 unfinished=0 survivors=0 time=8.1s  [OK]
-  k= 9: presplit=4096 boxes=773,048 pruned[pair/contr,bnd,-,order,measure]=338515,43649,0,0,6408 overflow=0 unfinished=0 survivors=0 time=10.1s  [OK]
-  ALL RUNS COMPLETE WITHOUT OVERFLOW: True

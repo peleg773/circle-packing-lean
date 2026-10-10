@@ -4,7 +4,7 @@ rigmath_fast.acos_lo_fast; every other rigorous check unchanged).
 FINAL CERTIFIED VERSION (= ringbb_rig_fast.py with: radius-bound table as an input, small survivor buffer whose
 overflow is a hard failure, JSON audit log per run).
 
-RIGOROUS branch-and-bound over interior configurations (see ringbb.py docstring and lemmas.md L1-L6).
+RIGOROUS branch-and-bound over interior configurations (see ringbb.py docstring and docs/lemmas.md L1-L6).
 
 Every pruning decision and every contraction step is certified with outward-rounded interval
 arithmetic (rigmath.py: nextafter-rounding for + - * / sqrt, series enclosures for cos/arccos).
