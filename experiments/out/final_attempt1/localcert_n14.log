@@ -1,0 +1,9 @@
+n=14: reduced unknowns 15, reduced equations 15; |B|=10 |C|=19 (2n=28)
+  Newton residual 8.6362e-78
+  Krawczyk (reduced symmetric system): True
+  d* in [0.60088416110936202262926650068963308613 +/- 8.34e-39]
+  inactive constraints strict: True
+  multiplier system: 15 equations, 15 unknowns
+  symmetric multipliers strictly positive: True  min lambda > 0.016615485711021265  min mu > 0.00875156945713924
+  PD: True  sigma >= [0.35180246 +/- 3.55e-9]
+  delta_loc >= [0.0007003775422855099408487865473707760411920596382603750351724315647538809165805 +/- 5.37e-80]   ALL OK: True

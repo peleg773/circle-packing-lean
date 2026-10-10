@@ -1,0 +1,2 @@
+n=15 k=9 flags=CM wdeep=0.25: presplit=256 boxes=61,335,382 reasons[pair,bnd,-,order,meas]=[np.int64(11160076), np.int64(18655815), np.int64(0), np.int64(0), np.int64(851928)] surv=0 maxdepth=47 t=494.5s
+n=15 k=10 flags=CM wdeep=0.25: presplit=256 boxes=27,359,114 reasons[pair,bnd,-,order,meas]=[np.int64(5291505), np.int64(5638343), np.int64(0), np.int64(0), np.int64(2749837)] surv=0 maxdepth=42 t=266.9s

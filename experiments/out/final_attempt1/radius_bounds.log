@@ -1,0 +1,7 @@
+m=8: L_m=2.304762566197615  k in [2,2]  results=[(2, 1, 0, 0)]  -> PROVED rho_m > L_m  (20.4s)
+m=9: L_m=2.613123316626823  k in [2,4]  results=[(2, 2, 0, 0), (3, 4, 0, 0), (4, 1, 0, 0)]  -> PROVED rho_m > L_m  (14.1s)
+m=10: L_m=2.8130228183724926  k in [2,5]  results=[(2, 4, 0, 0), (3, 6, 0, 0), (4, 22, 0, 0), (5, 4, 0, 0)]  -> PROVED rho_m > L_m  (25.9s)
+m=11: L_m=2.9238014763586864  k in [3,7]  results=[(3, 2, 0, 0), (4, 4, 0, 0), (5, 15078, 0, 0), (6, 24274, 0, 0), (7, 22000, 0, 0)]  -> PROVED rho_m > L_m  (34.8s)
+m=12: L_m=3.029598900514253  k in [3,7]  results=[(3, 2, 0, 0), (4, 2, 0, 0), (5, 15832, 0, 0), (6, 32024, 0, 0), (7, 40800, 0, 0)]  -> PROVED rho_m > L_m  (54.7s)
+m=13: L_m=3.2360647414318118  k in [4,8]  results=[(4, 56146, 0, 0), (5, 76076, 0, 0), (6, 196982, 0, 0), (7, 271848, 0, 0), (8, 246404, 0, 0)]  -> PROVED rho_m > L_m  (34.1s)
+written C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\known_packings\proven_radius_bounds.json

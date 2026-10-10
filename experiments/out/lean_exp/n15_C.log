@@ -1,0 +1,4 @@
+n=15 k=5 flags=C wdeep=0.25: presplit=256 boxes=363,042 reasons[pair,bnd,-,order,meas]=[np.int64(90104), np.int64(88198), np.int64(0), np.int64(0), np.int64(0)] surv=3347 maxdepth=45 t=5.9s
+n=15 k=6 flags=C wdeep=0.25: presplit=256 boxes=4,959,570 reasons[pair,bnd,-,order,meas]=[np.int64(1367424), np.int64(1112489), np.int64(0), np.int64(0), np.int64(0)] surv=0 maxdepth=35 t=22.1s
+n=15 k=7 flags=C wdeep=0.25: presplit=256 boxes=21,538,780 reasons[pair,bnd,-,order,meas]=[np.int64(5779546), np.int64(4989972), np.int64(0), np.int64(0), np.int64(0)] surv=0 maxdepth=42 t=106.5s
+n=15 k=8 flags=C wdeep=0.25: presplit=256 boxes=37,758,854 reasons[pair,bnd,-,order,meas]=[np.int64(9512606), np.int64(9366949), np.int64(0), np.int64(0), np.int64(0)] surv=0 maxdepth=47 t=230.1s

@@ -1,0 +1,6 @@
+n=15 rho=3.52135696470617 delta_B=32.995947 deg  2pi/delta=10.9104  R_I=2.898268  rho-2=1.521357
+  k= 6: presplit=4096 boxes=1,871,664  pruned[pair,bnd,red,order,measure]=489177,92725,0,0,355978  survivors=0  unfinished_subtrees=0  time=5.8s
+  k= 7: presplit=4096 boxes=12,645,810  pruned[pair,bnd,red,order,measure]=3507556,1321313,0,0,1496084  survivors=0  unfinished_subtrees=0  time=11.9s
+  k= 8: presplit=4096 boxes=43,624,534  pruned[pair,bnd,red,order,measure]=12290118,5219081,0,0,4305116  survivors=0  unfinished_subtrees=0  time=32.2s
+  k= 9: presplit=4096 boxes=84,537,936  pruned[pair,bnd,red,order,measure]=24595917,10120089,0,0,7555010  survivors=0  unfinished_subtrees=0  time=63.7s
+  k=10: presplit=4096 boxes=70,669,814  pruned[pair,bnd,red,order,measure]=22653069,3210580,14,0,9473292  survivors=0  unfinished_subtrees=0  time=58.2s

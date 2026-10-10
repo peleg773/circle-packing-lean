@@ -1,0 +1,5 @@
+[FINAL RIGOROUS] n=14 rho_test=3.32842855486084 mode=selfcontained delta_B in [0.6103122282981348,0.6103122282981351] R_I <= 2.660533150481877
+  radius table (lower bounds rho_m, m=0..13): [np.float64(0.0), np.float64(0.0), np.float64(0.9999999999999998), np.float64(1.1547005383792512), np.float64(1.4142135623730947), np.float64(1.7013016167040795), np.float64(1.9999999999999996), np.float64(1.999999999999999), np.float64(2.304762566197615), np.float64(2.613123316626823), np.float64(2.8130228183724926), np.float64(2.9238014763586864), np.float64(3.029598900514253), np.float64(3.2360647414318118)]
+  k= 4: presplit=4174 boxes=4,174 pruned[pair/contr,bnd,-,order,measure]=774,561,0,0,0 overflow=0 unfinished=0 survivors=2839 time=5.8s  [OK]
+      survivor s-ranges: [1.53629,1.53629], [1.44260,1.44260], [1.33557,1.33557], [1.33557,1.33557]
+  ALL RUNS COMPLETE WITHOUT OVERFLOW: True

@@ -1,0 +1,29 @@
+[FINAL RIGOROUS] n=15 rho_test=3.52135696470617 mode=selfcontained delta_B in [0.5758879189907066,0.5758879189907069] R_I <= 2.8982675640604088
+  radius table (lower bounds rho_m, m=0..13): [np.float64(0.0), np.float64(0.0), np.float64(0.9999999999999998), np.float64(1.1547005383792512), np.float64(1.4142135623730947), np.float64(1.7013016167040795), np.float64(1.9999999999999996), np.float64(1.999999999999999), np.float64(2.304762566197615), np.float64(2.613123316626823), np.float64(2.8130228183724926), np.float64(2.9238014763586864), np.float64(3.029598900514253), np.float64(3.2360647414318118)]
+  k= 6: presplit=4096 boxes=1,871,792 pruned[pair/contr,bnd,-,order,measure]=489173,92733,0,0,356038 overflow=0 unfinished=0 survivors=0 time=7.1s  [OK]
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 48, in mapstar
+    return list(map(*args))
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_final.py", line 380, in _worker
+    return run_bb_rig(n, k, rho, dl, dh, rih, rm, tol, maxb, bx)
+MemoryError: Allocation failed (probably too large).
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_final.py", line 426, in <module>
+    main()
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_final.py", line 406, in main
+    nproc, reasons, surv, unf, dt, nb0 = solve_k(n, k, rho, tol, mode=mode)
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_final.py", line 389, in solve_k
+    res = pool.map(_worker, [(n, k, rho, P, tol, maxb, b) for b in boxes], chunksize=1)
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 774, in get
+    raise self._value
+MemoryError: Allocation failed (probably too large).

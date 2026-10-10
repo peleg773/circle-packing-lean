@@ -1,0 +1,1 @@
+{"rho": 3.52135696470617, "k": 8, "m": 7, "tol": 0.0001, "accept_pentagon": 0.0, "nodes": 315643, "done_volume": 1.0, "survivors": 0, "accepted": 0, "unresolved": 0, "stats": {"alive": 157821, "order": 3720, "dist": 81584, "ang": 0, "rad": 0, "excess": 53566, "cap": 18952, "accept": 0, "-": 0, "tol": 0}, "time_s": 30.933831214904785, "survivor_boxes": []}

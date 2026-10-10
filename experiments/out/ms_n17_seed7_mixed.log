@@ -1,0 +1,27 @@
+n=17 starts=20000 seed0=7 strategy=mixed time=217.9s  best-known d*=0.5274214663546
+best found d=0.527421466354575  (d - d*) = 0.000e+00
+  d=0.5274215 (d/d*-1=+6.38e-08)  boundary=10 contacts=25 hits= 7779  sig=d0d5098c8e
+  d=0.5273812 (d/d*-1=-7.63e-05)  boundary=10 contacts=26 hits=  415  sig=a2e2e134ca
+  d=0.5265058 (d/d*-1=-1.74e-03)  boundary=11 contacts=23 hits=  296  sig=b911b5f5c2
+  d=0.5264845 (d/d*-1=-1.78e-03)  boundary=11 contacts=23 hits= 2015  sig=b0ee9dcc70
+  d=0.5261499 (d/d*-1=-2.41e-03)  boundary=11 contacts=23 hits=  603  sig=2910303003
+  d=0.5261471 (d/d*-1=-2.42e-03)  boundary=11 contacts=23 hits=    4  sig=a167a8af72
+  d=0.5261437 (d/d*-1=-2.42e-03)  boundary=11 contacts=23 hits=    3  sig=7ec1fa9d1a
+  d=0.5251396 (d/d*-1=-4.33e-03)  boundary=11 contacts=23 hits=  314  sig=4208b9dca3
+  d=0.5250331 (d/d*-1=-4.53e-03)  boundary=10 contacts=25 hits=  353  sig=cb42d009e0
+  d=0.5249391 (d/d*-1=-4.71e-03)  boundary= 3 contacts= 1 hits=    1  sig=497040f9e2
+  d=0.5231773 (d/d*-1=-8.05e-03)  boundary=11 contacts=24 hits=    3  sig=4a1c38b5df
+  d=0.5212775 (d/d*-1=-1.16e-02)  boundary=11 contacts=23 hits=  573  sig=263ba026e7
+  d=0.5200124 (d/d*-1=-1.40e-02)  boundary=10 contacts=24 hits=    1  sig=97e37ed36e
+  d=0.5197098 (d/d*-1=-1.46e-02)  boundary=11 contacts=23 hits=  265  sig=0697a6875f
+  d=0.5190034 (d/d*-1=-1.60e-02)  boundary=10 contacts=23 hits=    1  sig=c5d808688c
+  d=0.5176381 (d/d*-1=-1.85e-02)  boundary=12 contacts=12 hits=  834  sig=5f18f07b1e
+  d=0.5176381 (d/d*-1=-1.85e-02)  boundary=12 contacts=26 hits=   59  sig=cd29f92cac
+  d=0.5176381 (d/d*-1=-1.85e-02)  boundary= 8 contacts=29 hits=  115  sig=d3ea662913
+  d=0.5176381 (d/d*-1=-1.85e-02)  boundary=10 contacts=25 hits=  293  sig=a842520ecd
+  d=0.5176381 (d/d*-1=-1.85e-02)  boundary=10 contacts=25 hits=   41  sig=3263b39219
+  d=0.5176381 (d/d*-1=-1.85e-02)  boundary=12 contacts=26 hits=  131  sig=5f59b6e9b5
+  d=0.5176381 (d/d*-1=-1.85e-02)  boundary=10 contacts=28 hits=   21  sig=60b2fa6112
+  d=0.5176381 (d/d*-1=-1.85e-02)  boundary=12 contacts=25 hits=  100  sig=2eb7f749e1
+  d=0.5176381 (d/d*-1=-1.85e-02)  boundary= 9 contacts=27 hits=  156  sig=302520b84d
+  d=0.5176381 (d/d*-1=-1.85e-02)  boundary=12 contacts=25 hits=  172  sig=ae5daa27a8

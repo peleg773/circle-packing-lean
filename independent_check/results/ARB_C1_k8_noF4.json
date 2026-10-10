@@ -1,0 +1,1 @@
+{"rho": 3.52135696470617, "k": 8, "tol": 0.0001, "use_F4": false, "nodes": 318789, "survivors": 0, "stats": {"alive": 159394, "order": 3577, "dist": 81595, "ang": 0, "rad": 0, "excess": 54646, "cap": 19577, "tol_survivor": 0}, "time_s": 260.8652355670929, "arithmetic": "arb+exact rationals", "survivor_boxes": []}

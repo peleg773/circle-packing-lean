@@ -1,0 +1,2 @@
+start k78 Sat Oct 10 01:45:22 JDT 2026
+k7 finished 01:58 (358814 survivors, saved); k8 stopped at Sat Oct 10 02:00:50 JDT 2026 to free CPU for Lean work

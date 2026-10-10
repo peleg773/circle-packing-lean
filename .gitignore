@@ -1,0 +1,20 @@
+# third-party papers (not redistributable; see literature.md for the references)
+literature_src/
+
+# redundant archive of lean_proof/ (GitHub offers zip downloads)
+lean_proof_circle_packing.zip
+
+# Lean build output
+.lake/
+
+# Python caches and crash dumps
+__pycache__/
+*.pyc
+*.stackdump
+experiments/out/numba_cache_exp/
+
+# large intermediate outputs (over 50 MB)
+experiments/out/v4_surv_n18_k7_selfcontained.npy
+
+# raw downloads from Packomania (the derived coordinates are in known_packings_13_20.json)
+known_packings/packomania_raw/

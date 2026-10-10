@@ -1,0 +1,30 @@
+[RIGOROUS] n=15 rho_test=3.52135696470617  delta_B in [0.5758879189907066,0.5758879189907069]  R_I <= 2.8982675640604088
+  k= 6: presplit=4096 boxes=1,872,114  pruned[pair/contr,bnd,-,order,measure]=489252,92902,0,0,355951  overflow=0 survivors=0  unfinished=0  time=12.5s
+  k= 7: presplit=4096 boxes=12,653,904  pruned[pair/contr,bnd,-,order,measure]=3510419,1319071,0,0,1499510  overflow=0 survivors=0  unfinished=0  time=76.1s
+  k= 8: presplit=4096 boxes=43,610,976  pruned[pair/contr,bnd,-,order,measure]=12282401,5211102,0,0,4314033  overflow=0 survivors=0  unfinished=0  time=374.7s
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 48, in mapstar
+    return list(map(*args))
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_rig.py", line 342, in _worker
+    return run_bb_rig(n, k, rho, dl, dh, rih, rm, tol, maxb, bx)
+MemoryError: Allocation failed (probably too large).
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_rig.py", line 373, in <module>
+    main()
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_rig.py", line 365, in main
+    nproc, reasons, surv, unf, dt, nb0 = solve_k(n, k, rho, tol)
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_rig.py", line 351, in solve_k
+    res = pool.map(_worker, [(n, k, rho, P, tol, maxb, b) for b in boxes], chunksize=1)
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 774, in get
+    raise self._value
+MemoryError: Allocation failed (probably too large).

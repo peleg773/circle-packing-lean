@@ -1,0 +1,29 @@
+[RIGOROUS] n=16 rho_test=3.6154255948732  delta_B in [0.5604931441036953,0.5604931441036957]  R_I <= 3.011860261045362
+  k= 6: presplit=4096 boxes=3,488,130  pruned[pair/contr,bnd,-,order,measure]=880650,67357,0,0,798106  overflow=0 survivors=0  unfinished=0  time=43.0s
+  k= 7: presplit=4096 boxes=24,563,734  pruned[pair/contr,bnd,-,order,measure]=6624138,983844,0,0,4675933  overflow=0 survivors=0  unfinished=0  time=161.5s
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 48, in mapstar
+    return list(map(*args))
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_rig_fast.py", line 354, in _worker
+    return run_bb_rig(n, k, rho, dl, dh, rih, rm, tol, maxb, bx)
+MemoryError: Allocation failed (probably too large).
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_rig_fast.py", line 385, in <module>
+    main()
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_rig_fast.py", line 377, in main
+    nproc, reasons, surv, unf, dt, nb0 = solve_k(n, k, rho, tol)
+  File "C:\Users\peleg\OneDrive\Documents\Claude\Math\shape-packing-labs\circle-packing-in-circles-lab\experiments\ringbb_rig_fast.py", line 363, in solve_k
+    res = pool.map(_worker, [(n, k, rho, P, tol, maxb, b) for b in boxes], chunksize=1)
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 367, in map
+    return self._map_async(func, iterable, mapstar, chunksize).get()
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\pool.py", line 774, in get
+    raise self._value
+MemoryError: Allocation failed (probably too large).

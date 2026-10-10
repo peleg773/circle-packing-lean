@@ -1,0 +1,3 @@
+n=16 k=5: 1575 boxes; threshold rho* delta_loc >= 8.7113e-04
+  boxes with no boundary placement (empty): 0
+  worst D = 1.6563e-04 < threshold 8.7113e-04 ? YES;  failing boxes: 0

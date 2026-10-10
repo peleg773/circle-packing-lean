@@ -1,0 +1,6 @@
+start Sat Oct 10 01:06:42 JDT 2026
+certificates+bounds done Sat Oct 10 01:09:18 JDT 2026
+n=14 done Sat Oct 10 01:10:14 JDT 2026
+n=15 done Sat Oct 10 01:27:21 JDT 2026
+n=16 done Sat Oct 10 06:08:24 JDT 2026
+ALL DONE Sat Oct 10 06:08:24 JDT 2026

@@ -1,0 +1,29 @@
+n=15 k=9 flags=C wdeep=0.25: presplit=256 boxes=63,747,448 reasons[pair,bnd,-,order,meas]=[np.int64(11810168), np.int64(20063684), np.int64(0), np.int64(0), np.int64(0)] surv=0 maxdepth=49 t=515.9s
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\spawn.py", line 107, in spawn_main
+    new_handle = reduction.duplicate(pipe_handle,
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\reduction.py", line 79, in duplicate
+    return _winapi.DuplicateHandle(
+PermissionError: [WinError 5] Access is denied
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\spawn.py", line 107, in spawn_main
+    new_handle = reduction.duplicate(pipe_handle,
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\reduction.py", line 79, in duplicate
+    return _winapi.DuplicateHandle(
+PermissionError: [WinError 5] Access is denied
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\spawn.py", line 107, in spawn_main
+    new_handle = reduction.duplicate(pipe_handle,
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\reduction.py", line 79, in duplicate
+    return _winapi.DuplicateHandle(
+PermissionError: [WinError 5] Access is denied
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\spawn.py", line 107, in spawn_main
+    new_handle = reduction.duplicate(pipe_handle,
+  File "C:\Users\peleg\AppData\Local\Programs\Python\Python310\lib\multiprocessing\reduction.py", line 79, in duplicate
+    return _winapi.DuplicateHandle(
+PermissionError: [WinError 5] Access is denied
