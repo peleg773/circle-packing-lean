@@ -14,6 +14,7 @@ Detailed notes with per-claim provenance: `literature_src/LIT_AGENT_NOTES.md`. P
 | 19 | 2 sin(pi/12) | proved (Fodor 1999) | |
 
 **Update 2026-10-11.** n = 15 and 16: proved and Lean-verified in this repository (published 10 October 2026).
+n = 18: proved and Lean-verified in this repository (added 11 October 2026).
 Sources checked: Packomania (last update 25-Dec-2024; bold = proven only for N <= 13 and 19), NumberDB T394
 (open: 15, 16, 17, 18, 20), Wikipedia, arXiv API searches (no paper on n >= 15 optimality),
 Semantic Scholar / OpenAlex citation chains of Fodor 1999/2003, Melissen 1994, GLNO 1998, E-L 2020, Pirl 1969

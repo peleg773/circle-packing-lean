@@ -12,7 +12,15 @@ alone, quickly, without scripts._
   (about 50 min; 2026-10-10 19:45). The referee review is in `referee_n16_explicit.md`.
 * **n = 15, explicit form (2026-10-11).** `circle_packing_15` now names the explicit configuration `optimal15`
   (`Exact15.lean`; `optimal15_eq_Cs` is kernel-only). Package version 1.4.0; its clean build passed (44 min).
-* This repository covers n = 15 and 16 (see `STATUS.md`).
+* **n = 18: done (2026-10-11).** `circle_packing_18` (+ `_iff`, `_euclidean`): `R18 = 1 + √2 + √6`, attained
+  by the explicit `optimal18`. Axioms: 3 standard + 573 native (lower bound only). Package version 1.5.0.
+  * Below ρ₁₉ at most 11 boundary circles (`Count18.lean`), so k ≥ 7; radius bound for 14 circles (3.31,
+    `Prb14`) closes k ≥ 14 at the root.
+  * Search at ρ just above ρ₁₉, tolerance 2⁻¹⁴: k = 9..13 close (chunked certificates, about 110 CPU-hours);
+    k = 7, 8 leave boxes near the hexagon core (six variants, `HexCore18`) or near ten isolated structures
+    (`N18CoresOK`), refined at 2⁻¹⁸ where needed (`survRef`); `Iso18`, `HexImp18` exclude them below ρ₁₉ by
+    local uniqueness in exact arithmetic over ℚ(√2, √3).
+  * `Opt18.lean`: `optimal18` and the exact distance check `pack18OK`.
 
 ## Design decisions (all cases)
 * **No floating point anywhere.** The heuristics use `Int64` fixed point with unit 2⁻²⁸. Lean's runtime

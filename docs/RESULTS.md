@@ -1,4 +1,4 @@
-# RESULTS — packing 15 and 16 equal circles in a circle
+# RESULTS — packing 15, 16 and 18 equal circles in a circle
 
 _Research session 2026-10-09/10.  Items marked (*) are filled from the final certified run
 (`experiments/out/final/`); see section 3._
@@ -93,6 +93,39 @@ Axioms: `propext`, `Classical.choice`, `Quot.sound` and 62 `native_decide` certi
 (branch-and-bound chunks, lower bound only).  The algebraic identification is kernel-only (`q16_bounds` and
 `R16_bounds` depend on the three standard axioms).  The Lean search needs about 13.5M boxes, against 3.1G
 for the Python run of section 3.
+
+**Theorem C (n = 18; Lean, 2026-10-11).**  The minimal container radius for 18 unit circles is
+  R_18 = 1 + sqrt2 + sqrt6 = 4.86370330515627314699...,
+the same as for 19 circles (Fodor 1999); equivalently d_18 = d_19 = 2 sin(pi/12) = 0.51763809020504152470...
+It is attained by the 19-circle packing without one circle of its outer ring (a centre circle, six circles
+around it, eleven circles touching the container), and also by several rigid configurations with seven or eight
+inner circles (one or two of them at distance 2 sqrt2 from the centre), each with its mirror image.  So the
+optimum is not unique.
+
+Lean theorem `circle_packing_18` (`lean_proof/CirclePacking/Final18.lean`):
+```lean
+theorem circle_packing_18 :
+    ((∀ i, ‖optimal18 i‖ + 1 ≤ R18) ∧ ∀ i j, i ≠ j → 2 ≤ ‖optimal18 i - optimal18 j‖) ∧
+    ∀ (c : Fin 18 → ℂ) (z₀ : ℂ) (R : ℝ), (∀ i, ‖c i - z₀‖ + 1 ≤ R) →
+      (∀ i j, i ≠ j → 2 ≤ ‖c i - c j‖) → R18 ≤ R
+```
+with `R18 = 1 + √2 + √6` and `optimal18 i` = `0`, `polar 2 ((i-1)/6)` (i = 1..6), `polar (√2 + √6) ((2(i-7)+1)/24)`
+(i = 7..17), where `polar r t` is the point at distance r and angle t turns.
+
+How the proof goes (`lean_proof/README.md`, module map):
+* Below rho_19 = √2 + √6 (container radius minus 1) at most eleven centres fit on the boundary circle, since two
+  of them are more than 1/12 turn apart (`card_le_eleven`).  So at least seven circles are interior.
+* A radius bound for 14 circles (rho_14 > 3.31, a new branch-and-bound run) closes k >= 14 interior circles at
+  the root: interior centres lie within sqrt(rho^2 - 4) < 3.306.
+* The branch and bound at a rational rho just above rho_19 (tolerance 2^-14) closes k = 9..13.  For k = 7 and 8 it
+  leaves 6,908 and 6,876 boxes.  All of them lie near rigid structures: the hexagon (centre and six ring circles),
+  whose six boundary windows hold two circles each but one, and ten isolated structures (five and their mirror
+  images).  Boxes that are too coarse are searched again at 2^-18 (`survRef`).
+* For each structure, an exact core in Q(√2, √3) and inexact local-uniqueness data (`LocalU.lean`) show that a
+  configuration near it equals it, and so has its boundary circles at rho_19 exactly.  This contradicts
+  rho < rho_19.
+* Axioms: `propext`, `Classical.choice`, `Quot.sound` and 573 `native_decide` certificate axioms (lower bound
+  only).  That `optimal18` is a packing is kernel-only (exact distances in Q(√2, √3)).
 
 **Novelty.**  Optimality was previously proven for n ≤ 14 and n = 19.  Wikipedia and NumberDB T394 record n = 14
 (Ekanayake–LaFountain 2024); Packomania's bold marks still stop at 13.  As of 2026-10-09 all three list n = 15

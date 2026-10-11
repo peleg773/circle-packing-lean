@@ -1,5 +1,5 @@
 name = "circle_packing"
-version = "1.4.0"
+version = "1.5.0"
 defaultTargets = ["CirclePacking"]
 
 [leanOptions]
@@ -19,6 +19,41 @@ precompileModules = true
 # computational core (core Lean only), compiled to native code for `native_decide`
 [[lean_lib]]
 name = "C16Compute"
+precompileModules = true
+
+# computational core (core Lean only), compiled to native code for `native_decide`
+[[lean_lib]]
+name = "C17Compute"
+precompileModules = true
+
+# computational core (core Lean only), compiled to native code for `native_decide`
+[[lean_lib]]
+name = "C17Ref"
+precompileModules = true
+
+# computational core (core Lean only), compiled to native code for `native_decide`
+[[lean_lib]]
+name = "C17Surv"
+precompileModules = true
+
+# computational core (core Lean only), compiled to native code for `native_decide`
+[[lean_lib]]
+name = "C18Compute"
+precompileModules = true
+
+# computational core (core Lean only), compiled to native code for `native_decide`
+[[lean_lib]]
+name = "C18Ref"
+precompileModules = true
+
+# computational core (core Lean only), compiled to native code for `native_decide`
+[[lean_lib]]
+name = "C18Surv"
+precompileModules = true
+
+# computational core (core Lean only), compiled to native code for `native_decide`
+[[lean_lib]]
+name = "C18Tmpl"
 precompileModules = true
 
 # the proofs; the root module `CirclePacking` imports everything

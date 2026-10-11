@@ -1,5 +1,6 @@
 import CirclePacking.Final
 import CirclePacking.Final16
+import CirclePacking.Final18
 
 /-! Prints the statements and the axioms they depend on:  `lake env lean Check.lean` -/
 
@@ -65,11 +66,29 @@ decimal brackets. -/
 #print axioms CirclePacking.q16_bounds
 #print axioms CirclePacking.R16_bounds
 
-/-! What a certificate axiom states (two examples; every `…native_decide.ax_1_1` axiom has this form:
+/-! n = 18 -/
+
+#check @CirclePacking.circle_packing_18
+#check @CirclePacking.circle_packing_18_euclidean
+#check @CirclePacking.circle_packing_18_iff
+#print axioms CirclePacking.circle_packing_18
+#print axioms CirclePacking.circle_packing_18_euclidean
+#print axioms CirclePacking.circle_packing_18_iff
+
+/-! n = 18: every definition the statement uses (`polar r t` is the point at distance `r` and angle `t`
+turns).  That `optimal18` is a packing at radius `R18` uses only the standard axioms. -/
+
+#print CirclePacking.R18
+#print CirclePacking.optimal18
+#print CirclePacking.polar
+#print axioms CirclePacking.optimal18_packing
+
+/-! What a certificate axiom states (three examples; every `…native_decide.ax_1_1` axiom has this form:
 one closed Boolean computation from `CirclePacking/Cert/` evaluates to `true`). -/
 
 #print CirclePacking.n15_k10_c3._native.native_decide.ax_1_1
 #print CirclePacking.n16_k10_c3._native.native_decide.ax_1_1
+#print CirclePacking.n18_k7_c3._native.native_decide.ax_1_1
 
 /-! Cross-check of compiled against kernel evaluation: the kernel itself (no compiled code) evaluates the
 runs that close at the root and one small search, with the same definitions the certificates use.  (The large
@@ -80,6 +99,9 @@ example : CirclePacking.n15small = true := by decide +kernel
 
 set_option maxRecDepth 100000 in
 example : CirclePacking.n16small = true := by decide +kernel
+
+set_option maxRecDepth 100000 in
+example : CirclePacking.n18small = true := by decide +kernel
 
 set_option maxRecDepth 100000 in
 example : CirclePacking.checkRun (CirclePacking.Prb 8 3) (fun _ => false) 400 = true := by decide +kernel
