@@ -25,7 +25,7 @@ branch-and-bound certificate it uses (24 for n = 15, 62 for n = 16; lower bounds
 * Development copy: `C:\Users\peleg\lean_work\circle15` (library `Circle15`); the export renames it
   `CirclePacking` and keeps only the import closure of the root module.
 * Clean-build tests of the exported package: n = 15 (15.5 min); n = 15 + 16 (42.5 min); explicit n = 16
-  (about 50 min, 2026-10-10); package 1.4.0 with the explicit `optimal15` (2026-10-11): built and checked (`lake build`, `Check.lean`) in the
-  development copy, whose sources are identical apart from the renaming.
+  (about 50 min, 2026-10-10); package 1.4.0 with the explicit `optimal15`: passed (44 min on a shared machine, 2026-10-11;
+  `Build completed successfully (9168 jobs)`, `Check.lean` without errors).
 * Referee reviews of the n = 16 package: `referee_n16_lean.md`, `referee_n16_explicit.md` (nothing fatal or
   serious; minor points fixed).

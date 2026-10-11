@@ -11,7 +11,7 @@ alone, quickly, without scripts._
 * **Combined package** (`CirclePacking`, n = 15 + 16): the explicit-form version passed its clean test
   (about 50 min; 2026-10-10 19:45). The referee review is in `referee_n16_explicit.md`.
 * **n = 15, explicit form (2026-10-11).** `circle_packing_15` now names the explicit configuration `optimal15`
-  (`Exact15.lean`; `optimal15_eq_Cs` is kernel-only). Package version 1.4.0.
+  (`Exact15.lean`; `optimal15_eq_Cs` is kernel-only). Package version 1.4.0; its clean build passed (44 min).
 * This repository covers n = 15 and 16 (see `STATUS.md`).
 
 ## Design decisions (all cases)
