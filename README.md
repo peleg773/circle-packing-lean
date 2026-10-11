@@ -54,6 +54,17 @@ lake env lean Check.lean  # print the theorems, the definitions they use, and th
 Developed with AI assistance (Anthropic's Claude, through Claude Code). ChatGPT was also directed along the way to find an algebraic
 description of the 16-circle optimum using roots of polynomials.
 
+## Related independent work
+
+Others reached some of these results independently at about the same time:
+
+* **zii** developed a computer-assisted proof for 15 circles:
+  [ziifave/unequal-circle-proof](https://github.com/ziifave/unequal-circle-proof/tree/main/problems/packing-15-equal-disks-in-a-circle).
+* **nor** gave computer-assisted proofs of the optimal radii for 15, 16, 17, 18 and 20 circles, in exact rational
+  arithmetic: [paper and code](https://nor-git.pages.dev/circle-packing/).
+
+The proofs in this repository were developed separately from both, and are formally verified in Lean.
+
 ## License
 
 No license has been chosen yet, so all rights are reserved by default.
