@@ -2,9 +2,10 @@
 
 This Lean 4 + Mathlib project proves that the best known packings of **15** and of **16** equal circles in a
 circle are optimal. Optimality had previously been proven for n ≤ 14 and n = 19. The case n = 14 is due to
-Ekanayake and LaFountain (2024), with an earlier proof by Fodor (2003). As of October 2026, Wikipedia, NumberDB
-and Packomania list n = 15 and n = 16 as conjectured, not proven. To our knowledge both cases were open before
-this work.
+Ekanayake and LaFountain (2024), with an earlier proof by Fodor (2003). When this work was published (10 October 2026),
+Wikipedia, NumberDB and Packomania listed n = 15 and n = 16 as conjectured, not proven. On 11 October 2026, nor
+independently announced computer-assisted proofs, not formalized, for n = 15, 16, 17, 18 and 20
+([blog post](https://nor-blog.pages.dev/posts/2026-10-11-circle-in-circle-packing-15-20/), [paper and code](https://nor-git.pages.dev/circle-packing/)).
 
 **n = 15** (`CirclePacking/Final.lean`):
 
@@ -12,13 +13,32 @@ this work.
 theorem circle_packing_15 :
     (∀ (c : Fin 15 → ℂ) (z₀ : ℂ) (R : ℝ), (∀ i, ‖c i - z₀‖ + 1 ≤ R) →
       (∀ i j, i ≠ j → 2 ≤ ‖c i - c j‖) → 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5)) ≤ R) ∧
-    (∃ c : Fin 15 → ℂ, (∀ i, ‖c i‖ + 1 ≤ 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5))) ∧
-      ∀ i j, i ≠ j → 2 ≤ ‖c i - c j‖)
+    ((∀ i, ‖optimal15 i‖ + 1 ≤ 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5))) ∧
+      ∀ i j, i ≠ j → 2 ≤ ‖optimal15 i - optimal15 j‖)
+```
+
+The optimal configuration is an explicit definition (`Exact15.lean`; shown without `noncomputable`, and
+`optimal15` is written with `open Opt15`):
+
+```lean
+namespace Opt15
+def ρ : ℝ := √(6 + 2 / √5 + 4 * √(1 + 2 / √5))
+def r : ℝ := 1 / Real.sin (π / 5)
+def α : ℝ := Real.arccos ((ρ ^ 2 + r ^ 2 - 4) / (2 * ρ * r))
+def P (d θ : ℝ) : ℂ := ⟨d * Real.cos θ, d * Real.sin θ⟩
+end Opt15
+
+def optimal15 : Fin 15 → ℂ :=
+  ![P r 0, P r (2 * π / 5), P r (4 * π / 5), P r (6 * π / 5), P r (8 * π / 5),
+    P ρ α, P ρ (2 * π / 5 - α), P ρ (2 * π / 5 + α), P ρ (4 * π / 5 - α), P ρ (4 * π / 5 + α),
+    P ρ (6 * π / 5 - α), P ρ (6 * π / 5 + α), P ρ (8 * π / 5 - α), P ρ (8 * π / 5 + α), P ρ (2 * π - α)]
 ```
 
 So 15 non-overlapping unit disks fit inside a disk of radius `R` **if and only if**
-`R ≥ 1 + √(6 + 2/√5 + 4√(1 + 2/√5)) = 4.521356965…`. The optimum is an inner regular pentagon of 5 circles
-ringed by 10 circles that touch the container.
+`R ≥ 1 + √(6 + 2/√5 + 4√(1 + 2/√5)) = 4.521356965…`. In `optimal15`, five inner circles form a regular
+pentagon (centres at distance `r = 1/sin(π/5)` from the centre, so neighbours touch). They are ringed by ten
+circles that touch the container: centres at distance `ρ = R₁₅ − 1`, at the angles `±α` around each direction
+`2πj/5`, where `α` is chosen so that each outer circle touches its inner neighbour.
 
 **n = 16** (`CirclePacking/Final16.lean`):
 
@@ -82,11 +102,12 @@ it is the separate theorem `q16_isGreatest`.)
 
 **1. Read the statements.** They are the theorems quoted above, at the end of `CirclePacking/Final.lean` and
 `CirclePacking/Final16.lean`.
-* They use complex numbers or the Euclidean plane, the norm or distance, real square roots, and (n = 16)
-  `arccos`, `cos`, `sin`, integer polynomials and `sSup`.
+* They use complex numbers or the Euclidean plane, the norm or distance, real square roots, `sin`, `cos`,
+  `arccos` and `π`, and (n = 16) integer polynomials and `sSup`.
 * A unit disk centred at `c i` lies in the disk of radius `R` about `z₀` exactly when `‖c i - z₀‖ + 1 ≤ R`.
 * Two unit disks have disjoint interiors exactly when their centres are at least 2 apart.
 * `Fin n` indexes the disks, and the distance condition forces the centres to be distinct.
+* For n = 15 the statement names `optimal15` and `Opt15.ρ, r, α, P`, quoted above and printed by `Check.lean`.
 * For n = 16 the statement names a few project definitions, all quoted above and printed by `Check.lean`:
   * `R16`, `q16`, `H16`, `optimal16` and the parameters `Opt16.ρ, θ, B, a, d, D, b, c`;
   * `ZPoly.toPoly`, which turns a coefficient list `[a₀, a₁, …]` into `a₀ + X·(a₁ + X·(…))`;
@@ -111,10 +132,12 @@ machine. The work totals about 6 CPU-hours, almost all of it certificates.
 * Axioms named `….native_decide.ax_1_1`, one per certificate computation file in `CirclePacking/Cert/`
   (85 files; the other 15 files only combine chunks):
   * n = 15 depends on 24 of them;
-  * n = 16 depends on 62 (one, `rbAll_true`, is shared with n = 15). They are used only for the lower
-    bound. The rest of the n = 16 proof uses only the kernel: that `optimal16` is a packing at radius `R16`,
-    and the algebra identifying `R16`. `Check.lean` shows, for example, that `q16_bounds` and `R16_bounds`
-    depend on the standard axioms alone.
+  * n = 16 depends on 62 (one, `rbAll_true`, is shared with n = 15).
+
+  They are used only for the lower bounds. The rest of each proof uses only the kernel: that `optimal15` and
+  `optimal16` are packings at the stated radius, and the algebra identifying `R16`. `Check.lean` shows, for
+  example, that `optimal15_eq_Cs` (`optimal15` is the certified optimum), `q16_bounds` and `R16_bounds` depend on
+  the standard axioms alone.
 
   Each such axiom states that one closed Boolean computation evaluates to `true`, for example
 
@@ -155,7 +178,7 @@ Everything else is checked by the kernel:
 * the geometric reductions, the certified cosine bounds and the soundness of every pruning rule;
 * the local-uniqueness lemmas;
 * the radius bounds for up to 7 circles (those for 8 to 12 circles come from certificates);
-* the closed form (n = 15);
+* the closed form and the explicit configuration (n = 15);
 * the exact optimal configuration (n = 16): its existence, the degree-90 elimination, the root isolation
   and the explicit formulas;
 * the checks that both optimal configurations are packings.
@@ -209,6 +232,7 @@ Write `n` for the number of circles. The centres lie in the disk of radius `ρ` 
 * `L7Data.lean`, `CStar.lean`: the record `c*` in exact coordinates in `ℚ(sin π/5)`.
 * `L7*.lean`: exact local uniqueness, via KKT multipliers, an exact left inverse and Cauchy–Schwarz.
 * `Surv.lean`: survivors of `k = 5`.
+* `Exact15.lean`: the explicit configuration, `optimal15 = c*`.
 * `Final.lean`: the closed form.
 
 **n = 16.**

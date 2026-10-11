@@ -10,6 +10,16 @@ import CirclePacking.Final16
 #print axioms CirclePacking.circle_packing_15_euclidean
 #print axioms CirclePacking.circle_packing_15_iff
 
+/-! n = 15: the explicit configuration `optimal15` (`Exact15.lean`): five inner centres on a regular pentagon,
+ten centres on the boundary circle.  That it is the certified optimum uses only the standard axioms. -/
+
+#print CirclePacking.optimal15
+#print CirclePacking.Opt15.ρ
+#print CirclePacking.Opt15.r
+#print CirclePacking.Opt15.α
+#print CirclePacking.Opt15.P
+#print axioms CirclePacking.optimal15_eq_Cs
+
 #check @CirclePacking.circle_packing_16
 #check @CirclePacking.circle_packing_16_euclidean
 #check @CirclePacking.circle_packing_16_iff

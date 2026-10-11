@@ -7,7 +7,6 @@ All rigorous steps are deterministic.  Logs of the certified runs: `out/rig_*.lo
 | script | role | lemma |
 |---|---|---|
 | `local_cert.py n` | Krawczyk enclosure of the record configuration, strict inactive constraints, positive KKT multipliers, certified sigma, delta_loc (arb) -> `known_packings/local_certificate_n{n}.json` | L7 |
-| `local_cert_sym.py n` | same for mirror-symmetric configurations with overdetermined active set (n = 17) | L7 |
 | `verify_L4.py rho` | disjointness of shrunk forbidden arcs (measure bound) (arb) | L4 |
 | `rigmath.py` | outward-rounded interval primitives; rigorous cos / arccos series enclosures | L10 |
 | `ringbb_rig.py n rho kmin kmax tol` | rigorous branch and bound over interior configurations | L1-L6, L3', L9 |
@@ -41,11 +40,8 @@ feasible configuration; ~21k box tests), `positive_control.py` (B&B at a competi
 | `ringbb_rig.py` | first rigorous runs (superseded) | original |
 | `ringbb_rig_fast.py` | n=16 re-runs (superseded) | caches certified contraction bounds per pair (identical trees) |
 | `ringbb_final.py` | **final certified run n = 15, 16; radius bounds** | + self-proved radius table, overflow = hard failure, JSON audit log |
-| `ringbb_v3.py` | (n = 17 preparation) | + cheaper certified arccos lower bound in contraction (`rigmath_fast.py`, still rigorous) |
-| `ringbb_v4.py` | n = 17, n = 18 searches | + "deep-last" split rule (efficiency only; 80-2000x smaller trees for large k) |
+| `ringbb_v3.py` | exploration | + cheaper certified arccos lower bound in contraction (`rigmath_fast.py`, still rigorous) |
+| `ringbb_v4.py` | exploration; `exp_lean_tree.py` (tree sizes for the Lean port) | + "deep-last" split rule (efficiency only; 80-2000x smaller trees for large k) |
 
-## n = 18 tools
-`n18_structures.py` (exact lattice descriptions of optimal structures), `core_cert.py n18:<name>` (L7 certificate
-for a rigid core with exact coordinates, possibly overdetermined), `verify_cores_n18.py` (survivor boxes inside
-some certified core neighbourhood, cyclic STN for boundary angles), `analyze_survivors_n18.py` (exploration).
+## Planning tools
 Tree-size estimation: `estimate_tree.py`, `estimate_tree2.py` (Knuth random probes; planning only).

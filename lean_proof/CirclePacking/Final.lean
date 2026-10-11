@@ -1,4 +1,5 @@
 import CirclePacking.Main
+import CirclePacking.Exact15
 import CirclePacking.L7Checks1
 import CirclePacking.L7Checks2
 import CirclePacking.Cert.RB
@@ -39,100 +40,66 @@ theorem n15_certs : ∀ k ≤ 15, k ≠ 5 → Certified (P15 k) (fun _ => false)
   · subst h1; exact n15_k10
   · exact certified_of_checkRun (h k (by omega))
 
-/-! ### `ρ*` in closed form -/
-
-lemma sqrt5_eq : √5 = 5 - 8 * QK.s5 ^ 2 := by have := QK.s5_sq; linarith
-
-lemma sqrt_cot : √(1 + 2 / √5) = (3 / 2 - 2 * QK.s5 ^ 2) / QK.s5 := by
-  have hs := QK.s5_pos
-  have hb := QK.s5_bounds
-  have hp := QK.s5_poly
-  have h5 : 0 < √5 := by positivity
-  have hc : 0 < 3 / 2 - 2 * QK.s5 ^ 2 := by
-    obtain ⟨-, hh⟩ := hb
-    have : QK.s5 ^ 2 ≤ (QK.sHi : ℝ) ^ 2 := pow_le_pow_left₀ hs.le hh 2
-    have hv : (QK.sHi : ℝ) ^ 2 < 3 / 4 := by unfold QK.sHi; norm_num
-    linarith
-  rw [Real.sqrt_eq_iff_eq_sq (by positivity) (by positivity)]
-  rw [div_pow, eq_div_iff (by positivity)]
-  rw [sqrt5_eq] at h5 ⊢
-  field_simp
-  linear_combination (8 * QK.s5 ^ 2 - 9) * hp
-
-theorem ρs_closed : ρs = √(6 + 2 / √5 + 4 * √(1 + 2 / √5)) := by
-  unfold ρs
-  congr 1
-  have hs := QK.s5_pos
-  have hp := QK.s5_poly
-  have h5 : 0 < √5 := by positivity
-  rw [sqrt_cot]
-  rw [sqrt5_eq] at h5 ⊢
-  simp only [rho2K, QK.eval]
-  push_cast
-  field_simp
-  linear_combination (96 * QK.s5 ^ 2 + 16 * QK.s5 - 60) * hp
-
 /-! ### The main theorem -/
 
 /-- **Optimal packing of 15 unit circles in a circle.**
 (1) If 15 unit disks with centres `c i` have pairwise disjoint interiors (`‖c i - c j‖ ≥ 2`) and lie in
 the disk of radius `R` around `z₀`, then `R ≥ 1 + √(6 + 2/√5 + 4√(1 + 2/√5))`.
-(2) This radius is attained. -/
+(2) The explicit configuration `optimal15` (`CirclePacking.Exact15`) packs 15 unit disks in the disk of this radius
+about `0`. -/
 theorem circle_packing_15 :
     (∀ (c : Fin 15 → ℂ) (z₀ : ℂ) (R : ℝ), (∀ i, ‖c i - z₀‖ + 1 ≤ R) →
       (∀ i j, i ≠ j → 2 ≤ ‖c i - c j‖) → 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5)) ≤ R) ∧
-    (∃ c : Fin 15 → ℂ, (∀ i, ‖c i‖ + 1 ≤ 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5))) ∧
-      ∀ i j, i ≠ j → 2 ≤ ‖c i - c j‖) := by
+    ((∀ i, ‖optimal15 i‖ + 1 ≤ 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5))) ∧
+      ∀ i j, i ≠ j → 2 ≤ ‖optimal15 i - optimal15 j‖) := by
   rw [← ρs_closed]
-  constructor
-  · intro c z₀ R hR hd
-    have hp : IsPacking (fun i => c i - z₀) (R - 1) := by
+  refine ⟨fun c z₀ R hR hd => ?_, fun i => ?_, fun i j hij => ?_⟩
+  · have hp : IsPacking (fun i => c i - z₀) (R - 1) := by
       refine ⟨fun i => by linarith [hR i], fun i j hij => ?_⟩
       simp only [sub_sub_sub_cancel_right]
       exact hd i j hij
     have := n15_lower kktOK_true invOK_true rb_certs n15_certs n15_k5 _ _ hp
     linarith
-  · exact ⟨fun i => Cs i, fun i => by linarith [cstar_packing.1 i], cstar_packing.2⟩
+  · rw [optimal15_eq_Cs]; linarith [cstar_packing.1 i]
+  · rw [optimal15_eq_Cs, optimal15_eq_Cs]; exact cstar_packing.2 i j hij
 
 /-- **The optimal radius, as an equivalence.**  Fifteen non-overlapping unit disks fit in a disk of radius
 `R` if and only if `R ≥ 1 + √(6 + 2/√5 + 4√(1 + 2/√5))`. -/
 theorem circle_packing_15_iff (R : ℝ) :
     (∃ c : Fin 15 → ℂ, (∀ i, ‖c i‖ + 1 ≤ R) ∧ ∀ i j, i ≠ j → 2 ≤ ‖c i - c j‖) ↔
       1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5)) ≤ R := by
-  obtain ⟨hlow, ⟨c, hc1, hc2⟩⟩ := circle_packing_15
+  obtain ⟨hlow, h1, h2⟩ := circle_packing_15
   constructor
   · rintro ⟨d, hd1, hd2⟩
     exact hlow d 0 R (fun i => by simpa using hd1 i) hd2
   · intro hR
-    exact ⟨c, fun i => le_trans (hc1 i) hR, hc2⟩
+    exact ⟨optimal15, fun i => le_trans (h1 i) hR, h2⟩
 
 /-! ### The same theorem in the Euclidean plane `EuclideanSpace ℝ (Fin 2)` -/
 
-/-- **Optimal packing of 15 unit circles in a circle**, stated for points of `EuclideanSpace ℝ (Fin 2)`
-with the Euclidean distance. -/
+/-- **Optimal packing of 15 unit circles in a circle**, for points of `EuclideanSpace ℝ (Fin 2)` with the
+Euclidean distance; `optimal15` is read as the points `(x, y)`. -/
 theorem circle_packing_15_euclidean :
     (∀ (c : Fin 15 → EuclideanSpace ℝ (Fin 2)) (z₀ : EuclideanSpace ℝ (Fin 2)) (R : ℝ),
       (∀ i, dist (c i) z₀ + 1 ≤ R) → (∀ i j, i ≠ j → 2 ≤ dist (c i) (c j)) →
       1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5)) ≤ R) ∧
-    (∃ c : Fin 15 → EuclideanSpace ℝ (Fin 2), (∀ i, dist (c i) 0 + 1 ≤ 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5))) ∧
-      ∀ i j, i ≠ j → 2 ≤ dist (c i) (c j)) := by
+    ((∀ i, dist !₂[(optimal15 i).re, (optimal15 i).im] 0 + 1 ≤ 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5))) ∧
+      ∀ i j, i ≠ j → 2 ≤ dist !₂[(optimal15 i).re, (optimal15 i).im] !₂[(optimal15 j).re, (optimal15 j).im]) := by
   -- an isometry between `ℂ` and the Euclidean plane
   set e : ℂ ≃ₗᵢ[ℝ] EuclideanSpace ℝ (Fin 2) := Complex.orthonormalBasisOneI.repr
-  obtain ⟨hlow, hex⟩ := circle_packing_15
-  constructor
-  · intro c z₀ R hR hd
-    apply hlow (fun i => e.symm (c i)) (e.symm z₀) R
+  have he : ∀ z : ℂ, !₂[z.re, z.im] = e z := fun z => rfl
+  obtain ⟨hlow, h1, h2⟩ := circle_packing_15
+  refine ⟨fun c z₀ R hR hd => ?_, fun i => ?_, fun i j hij => ?_⟩
+  · apply hlow (fun i => e.symm (c i)) (e.symm z₀) R
     · intro i
       rw [← dist_eq_norm, LinearIsometryEquiv.dist_map]
       exact hR i
     · intro i j hij
       rw [← dist_eq_norm, LinearIsometryEquiv.dist_map]
       exact hd i j hij
-  · obtain ⟨c, hc1, hc2⟩ := hex
-    refine ⟨fun i => e (c i), fun i => ?_, fun i j hij => ?_⟩
-    · rw [← e.map_zero, LinearIsometryEquiv.dist_map, dist_zero_right]
-      exact hc1 i
-    · rw [LinearIsometryEquiv.dist_map, dist_eq_norm]
-      exact hc2 i j hij
+  · rw [he, ← e.map_zero, LinearIsometryEquiv.dist_map, dist_zero_right]
+    exact h1 i
+  · rw [he, he, LinearIsometryEquiv.dist_map, dist_eq_norm]
+    exact h2 i j hij
 
 end CirclePacking

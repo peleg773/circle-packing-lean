@@ -1,4 +1,4 @@
-# RESULTS — packing 15 and 16 equal circles in a circle (and progress on 17, 18)
+# RESULTS — packing 15 and 16 equal circles in a circle
 
 _Research session 2026-10-09/10.  Items marked (*) are filled from the final certified run
 (`experiments/out/final/`); see section 3._
@@ -21,9 +21,13 @@ formalised) is proved in Lean 4 + Mathlib: `lean_proof/`, theorem `CirclePacking
 theorem circle_packing_15 :
     (∀ (c : Fin 15 → ℂ) (z₀ : ℂ) (R : ℝ), (∀ i, ‖c i - z₀‖ + 1 ≤ R) →
       (∀ i j, i ≠ j → 2 ≤ ‖c i - c j‖) → 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5)) ≤ R) ∧
-    (∃ c : Fin 15 → ℂ, (∀ i, ‖c i‖ + 1 ≤ 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5))) ∧
-      ∀ i j, i ≠ j → 2 ≤ ‖c i - c j‖)
+    ((∀ i, ‖optimal15 i‖ + 1 ≤ 1 + √(6 + 2 / √5 + 4 * √(1 + 2 / √5))) ∧
+      ∀ i j, i ≠ j → 2 ≤ ‖optimal15 i - optimal15 j‖)
 ```
+`optimal15` is the explicit configuration (`Exact15.lean`): five inner centres at distance 1/sin(π/5) in the
+directions 2πj/5, and ten boundary centres at distance ρ₁₅ = R₁₅ − 1 in the directions 2πj/5 ± α, with
+α = arccos((ρ² + r² − 4)/(2ρr)).  (Until package 1.3.0 the statement only asserted that an optimal packing
+exists.)
 `lake build` passes. There is no `sorry`, and there are no axioms beyond `propext`, `Classical.choice` and
 `Quot.sound`, plus one `native_decide` axiom for each of the 24 branch-and-bound certificate chunks. Each of
 those axioms states that one specific integer-arithmetic search (`checkRun …` or `checkChunk …`) returns
@@ -93,8 +97,10 @@ for the Python run of section 3.
 **Novelty.**  Optimality was previously proven for n ≤ 14 and n = 19.  Wikipedia and NumberDB T394 record n = 14
 (Ekanayake–LaFountain 2024); Packomania's bold marks still stop at 13.  As of 2026-10-09 all three list n = 15
 and n = 16 as conjectured, and arXiv and citation-chain searches found no proof (literature.md).  To our knowledge
-Theorems A and B are new, and these are the first interval-arithmetic computer-assisted optimality proofs for
-equal circles in a circular container.  The proof does NOT depend on any previously published optimality result
+Theorems A and B were new when published here (10 October 2026), and these were the first interval-arithmetic
+computer-assisted optimality proofs for equal circles in a circular container.  On 11 October 2026 nor
+announced independent computer-assisted proofs, not formalized, for n = 15, 16, 17, 18 and 20
+([blog post](https://nor-blog.pages.dev/posts/2026-10-11-circle-in-circle-packing-15-20/), [paper and code](https://nor-git.pages.dev/circle-packing/)).  The proof does NOT depend on any previously published optimality result
 (the radius bounds it needs for 8..13 points are re-proved by the same machinery).
 
 ## 2. Method (details: proof_attempt.md, lemmas.md)
@@ -120,14 +126,13 @@ See `experiments/out/final/` (logs + one JSON audit record per (n, k)); summary 
 
 | n | k | boxes | survivors | outcome |
 |---|---|---|---|---|
-| 14 | 4 (record) | 4,174 | 2,839 | all within 1.52e-7 of the optimum (< delta_loc 2.33e-3) |
-| 14 | 5–9 | 114,746 … 773,048 | 0 | closed |
 | 15 | 5 (record) | 810,414 | 2,221 | all within 2.12e-4 (< delta_loc 1.08e-3) |
 | 15 | 6, 7, 8, 9, 10 | 1.9M, 12.7M, 43.6M, 84.3M, 70.2M | 0 | closed |
 | 16 | 5 (record) | 861,954 | 1,575 | all within 1.66e-4 (< delta_loc 8.71e-4) |
 | 16 | 6, 7, 8, 9, 10, 11 | 3.5M, 24.6M, 135M, 534M, 1.23G, 1.19G | 0 | closed |
 
-All runs: overflow = 0, unfinished = 0; tolerance 1e-5 (record case) or 0.02 (others).
+All runs: overflow = 0, unfinished = 0; tolerance 1e-5 (record case) or 0.02 (others).  (That run also re-proved the
+known case n = 14 as a calibration, hence the line "n=14 done" in `TIMES.txt`; its outputs are no longer kept.)
 (The Lean searches of section 1 prune much harder, by iterated contraction: about 13.5M boxes in total for
 n = 16, against 3.1G here.)
 
@@ -167,14 +172,6 @@ components: the Lean kernel with Mathlib, and compiled evaluation of the 8 searc
    but intricate (assignment enumeration of boundary points).
 5. Reproducibility so far only on one machine (Windows 11, x86-64).
 
-## 7. Other targets
-* **n = 17:** record packing certified as an isolated strict local optimum (mirror-symmetric reduced Krawczyk:
-  d*_17 = 0.52742146635457472164373840987585573(62 +- 1.3e-38), delta_loc >= 1.57e-4).  The global search is
-  heavier (k up to 12, a competitor within 7.6e-5).  Status 2026-10-10: the Python pipeline
-  (`run_n17_full.sh`) is ready but was not run; the Lean search (section 1) needs about 20x less compute for n = 16
-  (about 4 vs 94 core-hours; 230x fewer boxes), so n = 17 is now being attacked directly in Lean (see STATUS.md).
-* **n = 18:** analysis of the "one missing point" in `n18_analysis.md`: in the push-out framework Fodor's n=19
-  theorem is "Bmax(I) <= 18-k", the n=18 conjecture is "Bmax(I) <= 17-k"; the critical family (19-packing minus
-  one outer point) has 30 deg of slack in every measure/counting bound, so it can only be excluded via the
-  discrete window structure; its 17-point core is rigorously certified as a strict local maximum
-  (delta_loc >= 6.8e-4), giving a concrete route to a full proof with the same machinery.
+## 7. Other counts
+This repository covers n = 15 and 16.  nor's announcement of 11 October 2026 (see section 1) covers n = 17, 18
+and 20 as well.

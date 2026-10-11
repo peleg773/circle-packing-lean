@@ -4,22 +4,24 @@ This repository contains computer-assisted proofs that the best known packings o
 circles in a circle are optimal. Both proofs are **formally verified in Lean 4 + Mathlib**.
 
 Optimality had previously been proven for n ≤ 14 and n = 19. The case n = 14 is due to Ekanayake and
-LaFountain (2024), with an earlier proof by Fodor (2003). As of October 2026, Wikipedia, NumberDB and
-Packomania list n = 15 and n = 16 as conjectured, not proven. To our knowledge both cases were open before
-this work.
+LaFountain (2024), with an earlier proof by Fodor (2003). When this work was published (10 October 2026),
+Wikipedia, NumberDB and Packomania listed n = 15 and n = 16 as conjectured, not proven.
+
+On 11 October 2026, nor independently announced computer-assisted proofs, not formalized, for n = 15, 16, 17,
+18 and 20 ([blog post](https://nor-blog.pages.dev/posts/2026-10-11-circle-in-circle-packing-15-20/), [paper and code](https://nor-git.pages.dev/circle-packing/)). This repository covers n = 15 and 16.
 
 | n | smallest container radius R for n unit circles | status |
 |---|---|---|
 | 15 | 1 + √(6 + 2/√5 + 4√(1 + 2/√5)) = 4.52135696470616424090… | proved, Lean-verified (`circle_packing_15`) |
 | 16 | 1 + √(2/(1 − q₁₆)) = 4.61542559487319398553924…, where q₁₆ is the largest real root of an explicit integer polynomial H₁₆ of degree 90 | proved, Lean-verified (`circle_packing_16`) |
-| 17 | 4.79203374831057917014912… (best known packing) | in progress |
-| 18 | conjecturally R₁₈ = R₁₉ = 1 + √6 + √2 | in progress |
 
-Each theorem states the optimal radius explicitly and proves that no packing fits in a smaller circle.
-* The 16-circle theorem also names an explicit packing, `optimal16`, that attains the radius.
-* In the current package the 15-circle theorem only asserts that an optimal packing exists. An explicit
-  `optimal15`, given by closed formulas and already proved equal to the certified optimum, comes with the next
-  update.
+Each theorem states the optimal radius explicitly, names an explicit packing that attains it (`optimal15`,
+`optimal16`), and proves that no packing fits in a smaller circle.
+* n = 15: a closed form in nested square roots; `optimal15` is an inner regular pentagon ringed by ten circles.
+* n = 16: `q₁₆ = cos θ` is the cosine of the angle between neighbouring boundary circles, defined as the largest
+  real root of H₁₆; `optimal16` is given by closed formulas in `q₁₆`. Lean proves that H₁₆ has degree 90 and
+  that q₁₆ is its largest real root. That 90 is also the algebraic degree of q₁₆ (irreducibility of H₁₆) was
+  checked only outside Lean; nothing depends on it.
 
 ## Check the proof yourself
 
@@ -42,14 +44,13 @@ lake env lean Check.lean  # print the theorems, the definitions they use, and th
 |---|---|
 | `lean_proof/` | **the proof**: a self-contained Lean package. The theorems are in `CirclePacking/Final.lean` (n = 15) and `CirclePacking/Final16.lean` (n = 16); `lean_proof/README.md` explains what to read, run and trust |
 | `docs/RESULTS.md` | the mathematical results, and an independent proof of n = 15 and n = 16 by a Python + ball-arithmetic pipeline |
-| `docs/STATUS.md`, `docs/lean_plan.md` | the project's status and the formalization log, including the work on 17 and 18 circles |
+| `docs/STATUS.md`, `docs/lean_plan.md` | the project's status and the formalization log |
 | `docs/lemmas.md`, `docs/proof_attempt.md` | the method: push-out lemma, exact boundary counting, branch and bound, local uniqueness |
-| `docs/n18_analysis.md` | the plan for 18 circles |
 | `docs/referee_n16_lean.md`, `docs/referee_n16_explicit.md` | independent reviews of the 16-circle Lean statement |
 | `docs/literature.md` | references; the papers themselves are not included |
 | `experiments/` | the Python + arb pipeline (the separate, non-Lean proof of n = 15 and n = 16) and exploration code |
 | `independent_check/` | a from-scratch re-implementation used to cross-check n = 15 |
-| `known_packings/` | local-uniqueness certificates (n = 15, 16, 17), certified cores for n = 18, and the best known packings for n = 13–20 (coordinates from Packomania, E. Specht) |
+| `known_packings/` | local-uniqueness certificates (n = 15, 16) and the best known packings for n = 13–20 (coordinates from Packomania, E. Specht) |
 
 ## Acknowledgments
 

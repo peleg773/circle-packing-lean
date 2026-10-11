@@ -85,12 +85,11 @@ lower bounds is:
   hence rho_m > L_m.  Values: L_8 = 2.3047625661976, L_9 = 2.6131233166268, L_10 = 2.8130228183725,
   L_11 = 2.9238014763587, L_12 = 3.0295989005143, L_13 = 3.2360647414318.
 * m > 13: L_m := L_13 (monotonicity).
-These also give the k-ranges: n=15: k <= 10 (L_11 > R_I = 2.8983); n=16: k <= 11 (L_12 > 3.0119);
-n=17: k <= 12 (L_13 > 3.2217).
+These also give the k-ranges: n=15: k <= 10 (L_11 > R_I = 2.8983); n=16: k <= 11 (L_12 > 3.0119).
 (For comparison, the published optimal values are rho_10 = 2.8130256 (Pirl), rho_11 = 1/sin(pi/9) (Melissen),
 rho_12 = 3.0296019 (Fodor), rho_13 = 1+sqrt5 (Fodor); they are NOT used.)
 
-## L7 Local uniqueness lemma — PROVED (computer: `local_cert.py`; symmetric variant `local_cert_sym.py`)
+## L7 Local uniqueness lemma — PROVED (computer: `local_cert.py`)
 Let x* be a configuration in the unit disk, B and C its boundary/contact sets, t* = d*^2, such that (verified):
  (a) x* lies in an explicit tiny box in which the active system has a unique solution (Krawczyk; for an
      overdetermined active set the mirror-symmetric reduced system, whose unique symmetric solution satisfies all
@@ -104,7 +103,7 @@ the closed unit disk with min distance >= d* and min_phi |R_phi x - x*|_2 < delt
 v_i = b_i.delta - |delta_i|^2 >= 0; KKT identity gives sum lambda u + sum mu v = Q(delta) <= 2 eps^2; hence
 |L delta| <= K eps^2; with |L delta| >= sigma eps: eps = 0 or eps >= delta_loc.  []
 The lemma uses only the listed active constraints, so it holds for any positive multiplier vector satisfying
-(b) (relevant when |B| + |C| > 2n, e.g. n = 17).
+(b) (relevant when |B| + |C| > 2n).
 Certified values: n=15: d* = 0.5679628677369514568307668140899832722(+-5e-38), delta_loc >= 3.079e-4;
 n=16: d* = 0.5531852191443445298998869702087782279(+-1e-38), delta_loc >= 2.409e-4.
 
@@ -136,24 +135,3 @@ float brackets computed with arb.  Tested against mpmath on 40,000+ inputs: no e
   top configurations have 10 boundary + 5 interior points.
 * O3 (n=16): optimum "4 pocket points + 1 gap point" with 11 boundary points; next local optimum (10 boundary +
   6 interior) is 2.8% worse.
-* O4 (n=18): optimal configurations (d = 2 sin(pi/12)) with 10, 11, 12 boundary points; all found contain the
-  centre point and >= 5 points at radius exactly 2 (the 19-packing's hexagonal core); several have rattlers.
-* O6 (n=17): best two local optima differ by 7.6e-5 relative and have nearby interior configurations
-  (k = 7: radii ~ (2.55, 2.07, 2.07, 1.95, 1.95, 1.93, 0.11)).
-
-* O7 (n=18, "one missing point"): in push-out form at rho slightly below rho_19 the measure bound has 30 deg of
-  slack for the family "centre + hexagon (radius 2) + 11 boundary points" (19-packing minus one outer point),
-  while it is exactly tight (slack -> 0) for the families containing 2sqrt2-points (centre + 5 ring + one
-  2sqrt2-point + 11 boundary; centre + 5 ring + two 2sqrt2 + 10 boundary).  So the hexagon family is the one
-  that no counting/measure argument can exclude: its exclusion uses the discrete window structure (each 30 deg
-  window between ring directions holds two boundary points only at exact tightness).
-* O8 (n=18): first-order window analysis around the exact hexagonal cluster at rho_19: no perturbation of the
-  7-point cluster (respecting its contacts to first order) widens the five 2-point windows simultaneously
-  (LP value exactly 0).
-* O9 (n=18): the 17-point CORE of the hexagon family (centre + hexagon + 10 boundary points filling 5 windows)
-  is a strict local maximum at d = 2 sin(pi/12): 31 contacts + 10 boundary constraints, strictly positive
-  stress (max-min multiplier 0.0191, LP), linearised active matrix of full rank 33 = 2*17 - 1.  Hence an
-  L7-type certificate (exact algebraic coordinates) excludes 18-configurations near this family with
-  d > 2 sin(pi/12), independently of the free 18th (sliding boundary) point.  Proposed route to n=18:
-  B&B at rho_19 for k = 6..13 + core certificates for each surviving structure + the strictness trick
-  (every structure has interior-interior contacts).
