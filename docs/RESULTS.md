@@ -98,9 +98,7 @@ for the Python run of section 3.
 (Ekanayake–LaFountain 2024); Packomania's bold marks still stop at 13.  As of 2026-10-09 all three list n = 15
 and n = 16 as conjectured, and arXiv and citation-chain searches found no proof (literature.md).  To our knowledge
 Theorems A and B were new when published here (10 October 2026), and these were the first interval-arithmetic
-computer-assisted optimality proofs for equal circles in a circular container.  On 11 October 2026 nor
-announced independent computer-assisted proofs, not formalized, for n = 15, 16, 17, 18 and 20
-([blog post](https://nor-blog.pages.dev/posts/2026-10-11-circle-in-circle-packing-15-20/), [paper and code](https://nor-git.pages.dev/circle-packing/)).  The proof does NOT depend on any previously published optimality result
+computer-assisted optimality proofs for equal circles in a circular container.  The proof does NOT depend on any previously published optimality result
 (the radius bounds it needs for 8..13 points are re-proved by the same machinery).
 
 ## 2. Method (details: proof_attempt.md, lemmas.md)
@@ -171,7 +169,3 @@ components: the Lean kernel with Mathlib, and compiled evaluation of the 8 searc
 4. The final gluing step (survivor boxes -> full configurations -> distance to c*) — exact-rational decisions,
    but intricate (assignment enumeration of boundary points).
 5. Reproducibility so far only on one machine (Windows 11, x86-64).
-
-## 7. Other counts
-This repository covers n = 15 and 16.  nor's announcement of 11 October 2026 (see section 1) covers n = 17, 18
-and 20 as well.

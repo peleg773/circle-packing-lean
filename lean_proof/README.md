@@ -3,9 +3,7 @@
 This Lean 4 + Mathlib project proves that the best known packings of **15** and of **16** equal circles in a
 circle are optimal. Optimality had previously been proven for n ≤ 14 and n = 19. The case n = 14 is due to
 Ekanayake and LaFountain (2024), with an earlier proof by Fodor (2003). When this work was published (10 October 2026),
-Wikipedia, NumberDB and Packomania listed n = 15 and n = 16 as conjectured, not proven. On 11 October 2026, nor
-independently announced computer-assisted proofs, not formalized, for n = 15, 16, 17, 18 and 20
-([blog post](https://nor-blog.pages.dev/posts/2026-10-11-circle-in-circle-packing-15-20/), [paper and code](https://nor-git.pages.dev/circle-packing/)).
+Wikipedia, NumberDB and Packomania listed n = 15 and n = 16 as conjectured, not proven.
 
 **n = 15** (`CirclePacking/Final.lean`):
 

@@ -7,9 +7,6 @@ Optimality had previously been proven for n ≤ 14 and n = 19. The case n = 14 i
 LaFountain (2024), with an earlier proof by Fodor (2003). When this work was published (10 October 2026),
 Wikipedia, NumberDB and Packomania listed n = 15 and n = 16 as conjectured, not proven.
 
-On 11 October 2026, nor independently announced computer-assisted proofs, not formalized, for n = 15, 16, 17,
-18 and 20 ([blog post](https://nor-blog.pages.dev/posts/2026-10-11-circle-in-circle-packing-15-20/), [paper and code](https://nor-git.pages.dev/circle-packing/)). This repository covers n = 15 and 16.
-
 | n | smallest container radius R for n unit circles | status |
 |---|---|---|
 | 15 | 1 + √(6 + 2/√5 + 4√(1 + 2/√5)) = 4.52135696470616424090… | proved, Lean-verified (`circle_packing_15`) |

@@ -11,10 +11,6 @@ _Last update: 2026-10-11_
 Axioms of each Lean theorem: `propext`, `Classical.choice`, `Quot.sound`, and one `native_decide` axiom per
 branch-and-bound certificate it uses (24 for n = 15, 62 for n = 16; lower bounds only). `Check.lean` lists them.
 
-## Other counts
-On 11 October 2026, nor announced computer-assisted proofs, not formalized, for n = 15, 16, 17, 18 and 20
-([blog post](https://nor-blog.pages.dev/posts/2026-10-11-circle-in-circle-packing-15-20/), [paper and code](https://nor-git.pages.dev/circle-packing/)). This repository covers n = 15 and 16 only.
-
 ## The Lean package (`lean_proof/`)
 * One package, `CirclePacking`. The statements are in `Final.lean` (n = 15) and `Final16.lean` (n = 16);
   `Check.lean` prints the statements, the definitions they use, and their axioms.
