@@ -26,7 +26,7 @@ theorem rb17_13 (hchk : ∀ k ≤ 13, Certified (Prb13 k) (fun _ => false))
 lemma rb17_restrict {m m' : ℕ} (h : m' ≤ m) (hL : Ltab17 m ≤ Ltab17 m') (hm' : RB17 m') : RB17 m :=
   fun d r hd => le_trans (sc_le_iff.mpr hL) (hm' _ r (hd.restrict h))
 
-/-- all radius bounds needed for `n = 17` -/
+/-- all radius bounds for fewer than 17 circles (used for `n = 18`) -/
 theorem radiusBounds17
     (hrb : ∀ m, 8 ≤ m → m ≤ 11 → ∀ k ≤ m, Certified (Prb m k) (fun _ => false))
     (h12 : ∀ k ≤ 12, Certified (Prb12 k) (fun _ => false))

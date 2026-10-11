@@ -314,7 +314,9 @@ it.
   fourteen or more interior circles close at the root.
 * `C17Ref.lean`, `Refine.lean`: refinement. A box that fails the survivor test at the tolerance of the run
   (`2⁻¹⁴`) is searched again at `2⁻¹⁸` (`survRef`, `certified_of_survRef`). `C17Compute.lean`, `C17Surv.lean`
-  and `Chunks2.lean` hold shared search code (the radius-bound run for 13 circles, chunk trees).
+  and `Chunks2.lean` hold shared search code (the radius-bound run for 13 circles, chunk trees). These files
+  also contain definitions from an unfinished search for 17 circles (`P17`, `survOK17h`, `k7tree`, …), which no
+  theorem of this package uses.
 * `Q23.lean`, `Q23Bounds.lean`, `Lattice18.lean`: exact arithmetic in `ℚ(√2, √3)` and the lattice points
   `pointQ r a` (radius `r`, angle `a · 15°`).
 * Survivors with seven or eight interior circles lie near rigid structures (`C18Tmpl.lean`):

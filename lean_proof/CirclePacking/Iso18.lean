@@ -5,8 +5,8 @@ import CirclePacking.LocalU
 # Survivors of 18 circles near an isolated rigid structure are impossible below `ρ₁₉`
 
 `iso_impossible18`: no admissible configuration with container parameter `ρ ∈ [ρ₁₉ - epsR, ρ₁₉)` lies in a box
-list passing `survIso18` for a structure `T` whose exact points satisfy the local-uniqueness data `L`.  As for
-17 circles (`KSeven17.lean`): the boundary circles lie one per window (`surv_assign_gen`); with the labels of `T`
+list passing `survIso18` for a structure `T` whose exact points satisfy the local-uniqueness data `L`.  The
+boundary circles lie one per window (`surv_assign_gen`); with the labels of `T`
 the configuration is within the uniqueness neighbourhood of the exact structure, hence equal to it, whose
 boundary circles are at distance `ρ₁₉`, not `ρ`.
 -/

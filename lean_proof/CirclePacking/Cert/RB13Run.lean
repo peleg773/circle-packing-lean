@@ -1,6 +1,6 @@
 import C17Compute
 
-/-! Computation: the radius-bound runs `m = 13` (all `k ≤ 13`), used for `n = 17`. Imports only the
+/-! Computation: the radius-bound runs `m = 13` (all `k ≤ 13`), used for `n = 18`. Imports only the
 computational core. -/
 
 namespace CirclePacking

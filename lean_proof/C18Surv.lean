@@ -10,7 +10,7 @@ The survivors of the search at `P18` lie near rigid structures of the 19-circle 
 circles (radius `ρ₁₉`).  The polar brackets used by the tests are computed from these.
 
 * `survIso18`: a whole configuration is rigid; its boundary circles lie one per narrow window (half-width `hW`
-  around the lattice angles), as for 17 circles.
+  around the lattice angles).
 * `survHex18`: the hexagon (centre, six ring circles); six wide windows between the ring arcs hold two boundary
   circles each but one, which holds one; the ten pinned circles are within their slots for every choice of the
   short window.
